@@ -1,14 +1,16 @@
+<snark>
+
 AFNetworking-RACExtensions is a delightful extension to the AFNetworking classes for iOS and Mac OS X. It's built on top of [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa), [AFNetworking](https://github.com/AFNetworking/AFNetworking), and other familiar foundation technologies. It provides an extension to the underlying modular architecture with well-designed, wrapper APIs that are… (easy?) to use. For example, here's how easy it is to get JSON from a URL:
 
 ``` objective-c
 NSURL *url = [NSURL URLWithString:@"https://alpha-api.app.net/stream/0/posts/stream/global"];
 NSURLRequest *request = [NSURLRequest requestWithURL:url];
-AFJSONRequestOperation *operation = [[AFJSONRequestOperation rac_startJSONRequestOperationWithRequest:request]subscribeNext:(id JSON) {
-    //Voila, magical JSON
+AFJSONRequestOperation *operation = [[AFJSONRequestOperation rac_startJSONRequestOperationWithRequest:request]subscribeNext:(RACTuple *JSONTuple) {
+    //Voila, magical JSON… well, maybe call `JSONTuple.first`, first.
 }];
 ```
 
-Perhaps the most important feature of all, however, is the amazing community of developers who use and contribute to AFNetworking every day. AFNetworking powers some of the most popular and critically-acclaimed apps on the iPhone, iPad, and Mac. 
+Perhaps the most important feature of all, however, is the amazing community of developers who use and contribute to AFNetworking and ReactiveCocoa every day. AFNetworking powers some of the most popular and critically-acclaimed apps on the iPhone, iPad, and Mac, and AFNetworking+RACExtensions powers the little sample app in this thing… so yeah. 
 
 Choose AFNetworking, then choose AFNetworking+RACExtensions, for your next project, or migrate over your existing projects—you'll feel a shift in [die Weltanschauung](http://en.wikipedia.org/wiki/World_view) because of it!
 
@@ -106,7 +108,7 @@ To set a compiler flag in Xcode, go to your active target and select the "Build 
 
 ## Credits
 
-ReactiveCocoa was created by [Justin Spahr-Summers]() and [Josh Abernathy]() in the pursuit of some kind of LINQ-ish - ELM - C# - Haskell something or other…
+ReactiveCocoa was created by [Justin Spahr-Summers]() and [Josh Abernathy]() in the pursuit of some kind of LINQ-ish - ELM - C# - Haskell something or other… It's cool, deal with it.
 
 AFNetworking was created by [Scott Raymond](https://github.com/sco/) and [Mattt Thompson](https://github.com/mattt/) in the development of [Gowalla for iPhone](http://en.wikipedia.org/wiki/Gowalla).
 
