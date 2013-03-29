@@ -20,7 +20,7 @@
 
 - (RACSignal *)rac_enqueueBatchOfHTTPRequestOperations:(NSArray *)requestOperations
 {
-    RACSignal *signal = [RACSignal merge:[requestOperations.rac_sequence flattenMap:^RACStream *(AFHTTPRequestOperation *request) {
+    RACSignal *signal = [RACSignal merge:[requestOperations.rac_sequence map:^RACStream *(AFHTTPRequestOperation *request) {
         return [request rac_overrideHTTPCompletionBlock];
     }]];
     [self enqueueBatchOfHTTPRequestOperations:requestOperations progressBlock:NULL completionBlock:NULL];
