@@ -52,6 +52,22 @@ UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0
 [imageView setImageWithURL:[NSURL URLWithString:@"http://i.imgur.com/r4uwx.jpg"] placeholderImage:[UIImage imageNamed:@"placeholder-avatar"]];
 ```
 
+OK, even I feel short-changed by that one.  Here's how to do it using only Reactive APIs:
+
+### (Real) Image Request
+
+``` objective-c
+RACSubject *imageSubject = [RACSubject subject];
+[self.afLogoImageView rac_liftSelector:@selector(setImage:) withObjects:imageSubject];
+NSURLRequest *imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://raw.github.com/AFNetworking/AFNetworking/gh-pages/afnetworking-logo.png"]];
+
+[[[AFImageRequestOperation rac_startImageRequestOperationWithRequest:imageRequest]map:^id(RACTuple *values) {
+  return [values first];
+}]subscribeNext:^(UIImage *image) {
+  [imageSubject sendNext:image];
+}];
+```
+
 ### API Client Request
 
 ``` objective-c
