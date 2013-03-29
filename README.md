@@ -23,6 +23,7 @@ Choose AFNetworking, then choose AFNetworking+RACExtensions, for your next proje
 - Questions? [Stack Overflow](http://stackoverflow.com/questions/tagged/afnetworking) is the best place to find answers
 - [Download AFNetworking+RACExtensions](https://github.com/CodaFi/AFNetworking-RACExtensions/archive/master.zip) and try out the included iPhone sample app.
 - Integrate it with your project (don't forget to run a `git submodule update -i --recursive`).
+- Profit immensely.
 
 ## Overview
 
@@ -113,19 +114,20 @@ operation.outputStream = [NSOutputStream outputStreamToMemory];
 
 AFNetworking 1.0 and higher requires either [iOS 5.0](http://developer.apple.com/library/ios/#releasenotes/General/WhatsNewIniPhoneOS/Articles/iPhoneOS4.html) and above, or [Mac OS 10.7](http://developer.apple.com/library/mac/#releasenotes/MacOSX/WhatsNewInOSX/Articles/MacOSX10_6.html#//apple_ref/doc/uid/TP40008898-SW7) ([64-bit with modern Cocoa runtime](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtVersionsPlatforms.html)) and above.
 
-For compatibility with iOS 4.3, use the latest 0.10.x release.
+For compatibility with iOS 4.3, use the latest 0.10.x release of AFNetworking.  In theory, ReactiveCocoa could work across most iOS versions, but you'd be wise to support only 4.0+ when using the extensions.
 
 ### ARC
 
 AFNetworking(+RACExtensions) uses ARC as of its 1.0 release.
+ReactiveCocoa has used ARC since its initial commit.
 
-If you are using AFNetworking 1.0 in your non-arc project, you will need to set a `-fobjc-arc` compiler flag on all of the AFNetworking source files. Conversely, if you are adding a pre-1.0 version of AFNetworking, you will need to set a `-fno-objc-arc` compiler flag.
+If you are using AFNetworking(+RACExtensions) 1.0 in your non-arc project, you will need to set a `-fobjc-arc` compiler flag on all of the AFNetworking(+RACExtensions) source files. Conversely, if you are adding a pre-1.0 version of AFNetworking, you will need to set a `-fno-objc-arc` compiler flag, but still use the `-fobjc-arc` flag with RAC and the Extensions.
 
 To set a compiler flag in Xcode, go to your active target and select the "Build Phases" tab. Now select all AFNetworking source files, press Enter, insert `-fobjc-arc` or `-fno-objc-arc` and then "Done" to enable or disable ARC for AFNetworking.
 
 ## Credits
 
-ReactiveCocoa was created by [Justin Spahr-Summers]() and [Josh Abernathy]() in the pursuit of some kind of LINQ-ish - ELM - C# - Haskell something or other… It's cool, deal with it.
+ReactiveCocoa was created by [Justin Spahr-Summers](https://github.com/jspahrsummers) and [Josh Abernathy](https://github.com/joshaber) in the pursuit of some kind of LINQ-ish - ELM - C# - Haskell something or other… It's cool, deal with it.
 
 AFNetworking was created by [Scott Raymond](https://github.com/sco/) and [Mattt Thompson](https://github.com/mattt/) in the development of [Gowalla for iPhone](http://en.wikipedia.org/wiki/Gowalla).
 
