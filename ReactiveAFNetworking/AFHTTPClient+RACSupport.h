@@ -59,9 +59,7 @@
  * be automatically -merge:'d into one large signal.  Unfortunately, the option to subscribe to the
  * progress of batch signals is unavailable at this time due to API difficulties.  The majority of 
  * the work to do such progress sending is defined in RACSubscriber+AFProgressCallbacks, however
- * it is strongly advised that that section of the extensions not be used.  A work-around can be 
- * made by dividing the total number of submitted requests by the number of times -subscribeNext:
- * evaluates.
+ * it is strongly advised that that section of the extensions not be used.  
  *
  * Unlike the singular version of this method, values are not replayed in the underlying subject and 
  * do not get sent to any new subscribers.

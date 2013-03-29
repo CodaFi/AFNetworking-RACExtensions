@@ -25,7 +25,7 @@
     }]];
     [self enqueueBatchOfHTTPRequestOperations:requestOperations progressBlock:NULL completionBlock:NULL];
 	
-    return signal;
+    return signal; 
 }
 
 - (RACSignal *)rac_getPath:(NSString *)path parameters:(NSDictionary *)parameters {
