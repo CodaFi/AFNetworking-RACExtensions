@@ -28,6 +28,8 @@ Choose AFNetworking, then choose AFNetworking+RACExtensions, for your next proje
 
 _BEGIN_HTML_DECLS
 
+Read the headers. Honestly, they have some really good explanations of how to use things.
+
 _END_HTML_DECLS
 
 ## Example Usage
@@ -40,8 +42,7 @@ AFXMLRequestOperation *operation = [[AFXMLRequestOperation rac_startXMLParserReq
   NSXMLParser *XMLParser = res.first;
   XMLParser.delegate = self;
   [XMLParser parse];
-} failure:nil]];
-[operation start];
+}];
 ```
 
 ### Image Request
