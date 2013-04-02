@@ -142,7 +142,7 @@
 	   [subject sendError:error];
    }]start];
 	
-	return (instancetype)subject;
+	return subject;
 }
 #endif
 
