@@ -5,7 +5,7 @@ AFNetworking-RACExtensions is a delightful extension to the AFNetworking classes
 ``` objective-c
 NSURL *url = [NSURL URLWithString:@"https://alpha-api.app.net/stream/0/posts/stream/global"];
 NSURLRequest *request = [NSURLRequest requestWithURL:url];
-AFJSONRequestOperation *operation = [[AFJSONRequestOperation rac_startJSONRequestOperationWithRequest:request]subscribeNext:(RACTuple *JSONTuple) {
+AFJSONRequestOperation *operation = [[AFJSONRequestOperation rac_startJSONRequestOperationWithRequest:request]subscribeNext:^(RACTuple *JSONTuple) {
     //Voila, magical JSON… well, maybe call `JSONTuple.first`, first.
 }];
 ```
