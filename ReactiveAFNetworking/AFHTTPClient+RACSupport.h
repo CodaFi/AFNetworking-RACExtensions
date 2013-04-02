@@ -7,6 +7,7 @@
 //
 
 #import "AFHTTPClient.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface AFHTTPClient (RACSupport)
 
