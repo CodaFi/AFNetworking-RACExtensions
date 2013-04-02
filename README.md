@@ -5,7 +5,7 @@ AFNetworking-RACExtensions is a delightful extension to the AFNetworking classes
 ``` objective-c
 NSURL *url = [NSURL URLWithString:@"https://alpha-api.app.net/stream/0/posts/stream/global"];
 NSURLRequest *request = [NSURLRequest requestWithURL:url];
-AFJSONRequestOperation *operation = [[AFJSONRequestOperation rac_startJSONRequestOperationWithRequest:request]subscribeNext:(RACTuple *JSONTuple) {
+AFJSONRequestOperation *operation = [[AFJSONRequestOperation rac_startJSONRequestOperationWithRequest:request]subscribeNext:^(RACTuple *JSONTuple) {
     //Voila, magical JSON… well, maybe call `JSONTuple.first`, first.
 }];
 ```
@@ -23,6 +23,7 @@ Choose AFNetworking, then choose AFNetworking+RACExtensions, for your next proje
 - Questions? [Stack Overflow](http://stackoverflow.com/questions/tagged/afnetworking) is the best place to find answers
 - [Download AFNetworking+RACExtensions](https://github.com/CodaFi/AFNetworking-RACExtensions/archive/master.zip) and try out the included iPhone sample app.
 - Integrate it with your project (don't forget to run a `git submodule update -i --recursive`).
+- Or integrate with [CocoaPods](https://github.com/CocoaPods/CocoaPods): ```pod 'AFNetworking-RACExtensions', '~>0.0.1'```
 - Profit immensely.
 
 ## Overview
