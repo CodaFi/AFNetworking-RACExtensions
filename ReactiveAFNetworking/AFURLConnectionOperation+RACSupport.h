@@ -11,6 +11,7 @@
 #import "AFJSONRequestOperation.h"
 #import "AFPropertyListRequestOperation.h"
 #import "AFXMLRequestOperation.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface AFHTTPRequestOperation (RACSupport)
 
