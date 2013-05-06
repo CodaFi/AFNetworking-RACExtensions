@@ -9,6 +9,11 @@
 #import "AFHTTPClient.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
+/*!
+ * User info key for accessing the AFHTTPRequestOperation on which the error occured.
+ */
+extern NSString * const AFNetworkingOperationErrorKey;
+
 @interface AFHTTPClient (RACSupport)
 
 #ifdef _SYSTEMCONFIGURATION_H
