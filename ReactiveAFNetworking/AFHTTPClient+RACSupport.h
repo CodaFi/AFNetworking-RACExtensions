@@ -78,31 +78,31 @@ extern NSString * const RAFNetworkingOperationErrorKey;
 - (RACSignal *)rac_enqueueBatchOfHTTPRequestOperations:(NSArray *)requestOperations;
 
 /*!
- * A convenience around -getPath:parameters:success:failure: that returns a signal of the 
+ * A convenience around -getPath:parameters:success:failure: that returns a cold signal of the 
  * result.
  */
 - (RACSignal *)rac_getPath:(NSString *)path parameters:(NSDictionary *)parameters;
 
 /*!
- * A convenience around -postPath:parameters:success:failure: that returns a signal of the
+ * A convenience around -postPath:parameters:success:failure: that returns a cold signal of the
  * result.
  */
 - (RACSignal *)rac_postPath:(NSString *)path parameters:(NSDictionary *)parameters;
 
 /*!
- * A convenience around -putPath:parameters:success:failure: that returns a signal of the
+ * A convenience around -putPath:parameters:success:failure: that returns a cold signal of the
  * result.
  */
 - (RACSignal *)rac_putPath:(NSString *)path parameters:(NSDictionary *)parameters;
 
 /*!
- * A convenience around -deletePath:parameters:success:failure: that returns a signal of the
+ * A convenience around -deletePath:parameters:success:failure: that returns a cold signal of the
  * result.
  */
 - (RACSignal *)rac_deletePath:(NSString *)path parameters:(NSDictionary *)parameters;
 
 /*!
- * A convenience around -patchPath:parameters:success:failure: that returns a signal of the
+ * A convenience around -patchPath:parameters:success:failure: that returns a cold signal of the
  * result.
  */
 - (RACSignal *)rac_patchPath:(NSString *)path parameters:(NSDictionary *)parameters;
