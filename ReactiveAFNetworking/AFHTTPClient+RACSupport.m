@@ -10,6 +10,8 @@
 #import "AFURLConnectionOperation+RACSupport.h"
 #import "AFHTTPRequestOperation.h"
 
+NSString * const RAFNetworkingOperationErrorKey = @"AFHTTPRequestOperation";
+
 @implementation AFHTTPClient (RACSupport)
 
 - (RACSignal *)rac_enqueueHTTPRequestOperation:(AFHTTPRequestOperation *)requestOperation
@@ -29,70 +31,43 @@
 }
 
 - (RACSignal *)rac_getPath:(NSString *)path parameters:(NSDictionary *)parameters {
-	RACReplaySubject *subject = [RACReplaySubject replaySubjectWithCapacity:1];
-
-	[self getPath:path parameters:parameters success:^(AFURLConnectionOperation *operation, id responseObject) {
-		[subject sendNext:responseObject];
-		[subject sendCompleted];
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		[subject sendError:error];
-	}];
-	
-	return subject;
+    return [self rac_requestPath:path parameters:parameters method:@"GET"];
 }
 
 - (RACSignal *)rac_postPath:(NSString *)path parameters:(NSDictionary *)parameters {
-	RACReplaySubject *subject = [RACReplaySubject replaySubjectWithCapacity:1];
-	
-	[self postPath:path parameters:parameters success:^(AFURLConnectionOperation *operation, id responseObject) {
-		[subject sendNext:responseObject];
-		[subject sendCompleted];
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		[subject sendError:error];
-	}];
-	
-	return subject;
+    return [self rac_requestPath:path parameters:parameters method:@"POST"];
 }
 
 - (RACSignal *)rac_putPath:(NSString *)path parameters:(NSDictionary *)parameters {
-	RACReplaySubject *subject = [RACReplaySubject replaySubjectWithCapacity:1];
-	
-	[self putPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		[subject sendNext:responseObject];
-		[subject sendCompleted];
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		[subject sendError:error];
-	}];
-	
-	return subject;
+    return [self rac_requestPath:path parameters:parameters method:@"PUT"];
 }
-
 
 - (RACSignal *)rac_deletePath:(NSString *)path parameters:(NSDictionary *)parameters {
-	RACReplaySubject *subject = [RACReplaySubject replaySubjectWithCapacity:1];
-	
-	[self deletePath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		[subject sendNext:responseObject];
-		[subject sendCompleted];
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		[subject sendError:error];
-	}];
-	
-	return subject;
+    return [self rac_requestPath:path parameters:parameters method:@"DELETE"];
 }
 
-
 - (RACSignal *)rac_patchPath:(NSString *)path parameters:(NSDictionary *)parameters {
-	RACReplaySubject *subject = [RACReplaySubject replaySubjectWithCapacity:1];
-	
-	[self patchPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		[subject sendNext:responseObject];
-		[subject sendCompleted];
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		[subject sendError:error];
-	}];
-	
-	return subject;
+    return [self rac_requestPath:path parameters:parameters method:@"PATCH"];
+}
+
+- (RACSignal *)rac_requestPath:(NSString *)path parameters:(NSDictionary *)parameters method:(NSString *)method {
+    return [RACSignal createSignal:^(id<RACSubscriber> subscriber) {
+        NSURLRequest *request = [self requestWithMethod:method path:path parameters:parameters];
+        AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:^(id operation, id result) {
+            [subscriber sendNext:RACTuplePack(operation, result)];
+            [subscriber sendCompleted];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSMutableDictionary *userInfo = [error.userInfo mutableCopy] ?: [NSMutableDictionary dictionary];
+            userInfo[RAFNetworkingOperationErrorKey] = operation;
+            [subscriber sendError:[NSError errorWithDomain:error.domain code:error.code userInfo:userInfo]];
+        }];
+
+        [self enqueueHTTPRequestOperation:operation];
+
+        return [RACDisposable disposableWithBlock:^{
+            [operation cancel];
+        }];
+    }];
 }
 
 #ifdef _SYSTEMCONFIGURATION_H
