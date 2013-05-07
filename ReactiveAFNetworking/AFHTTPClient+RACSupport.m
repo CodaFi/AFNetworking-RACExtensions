@@ -10,7 +10,7 @@
 #import "AFURLConnectionOperation+RACSupport.h"
 #import "AFHTTPRequestOperation.h"
 
-NSString * const AFNetworkingOperationErrorKey = @"AFHTTPRequestOperation";
+NSString * const RAFNetworkingOperationErrorKey = @"AFHTTPRequestOperation";
 
 @implementation AFHTTPClient (RACSupport)
 
@@ -58,7 +58,7 @@ NSString * const AFNetworkingOperationErrorKey = @"AFHTTPRequestOperation";
             [subscriber sendCompleted];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSMutableDictionary *userInfo = [error.userInfo mutableCopy] ?: [NSMutableDictionary dictionary];
-            userInfo[AFNetworkingOperationErrorKey] = operation;
+            userInfo[RAFNetworkingOperationErrorKey] = operation;
             [subscriber sendError:[NSError errorWithDomain:error.domain code:error.code userInfo:userInfo]];
         }];
 

@@ -12,7 +12,7 @@
 /*!
  * User info key for accessing the AFHTTPRequestOperation on which the error occured.
  */
-extern NSString * const AFNetworkingOperationErrorKey;
+extern NSString * const RAFNetworkingOperationErrorKey;
 
 @interface AFHTTPClient (RACSupport)
 
