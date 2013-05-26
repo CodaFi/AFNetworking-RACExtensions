@@ -25,6 +25,7 @@
 		846C57271739D043008B1704 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EAA18617056B5A00E98BFE /* AFXMLRequestOperation.m */; };
 		846C57281739D043008B1704 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EAA18817056B5A00E98BFE /* UIImageView+AFNetworking.m */; };
 		846C57291739D04C008B1704 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84EAA1001705028000E98BFE /* ReactiveCocoa.framework */; };
+		847D6A131752D625004E09C2 /* AFHTTPClient+RAFMocking.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D6A111752D625004E09C2 /* AFHTTPClient+RAFMocking.m */; };
 		84EAA0B81704E1E700E98BFE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84EAA0B71704E1E700E98BFE /* UIKit.framework */; };
 		84EAA0BA1704E1E700E98BFE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84EAA0B91704E1E700E98BFE /* Foundation.framework */; };
 		84EAA0BC1704E1E700E98BFE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84EAA0BB1704E1E700E98BFE /* CoreGraphics.framework */; };
@@ -167,6 +168,8 @@
 		846C57051739CD3D008B1704 /* Specta.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Specta.xcodeproj; path = External/Specta/Specta.xcodeproj; sourceTree = SOURCE_ROOT; };
 		846C57191739CD50008B1704 /* libSpecta.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSpecta.a; path = ../External/ReactiveCocoa/external/specta/build/Release/libSpecta.a; sourceTree = "<group>"; };
 		846C571E1739CDD0008B1704 /* RAFHTTPClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAFHTTPClientSpec.m; sourceTree = "<group>"; };
+		847D6A111752D625004E09C2 /* AFHTTPClient+RAFMocking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPClient+RAFMocking.m"; sourceTree = "<group>"; };
+		847D6A121752D625004E09C2 /* AFHTTPClient+RAFMocking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPClient+RAFMocking.h"; sourceTree = "<group>"; };
 		84EAA0B41704E1E700E98BFE /* Reactive AFNetworking Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reactive AFNetworking Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84EAA0B71704E1E700E98BFE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		84EAA0B91704E1E700E98BFE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -256,6 +259,8 @@
 			isa = PBXGroup;
 			children = (
 				846C571E1739CDD0008B1704 /* RAFHTTPClientSpec.m */,
+				847D6A111752D625004E09C2 /* AFHTTPClient+RAFMocking.m */,
+				847D6A121752D625004E09C2 /* AFHTTPClient+RAFMocking.h */,
 				846C56E81739CD20008B1704 /* Supporting Files */,
 			);
 			path = "RAFNetworking Tests";
@@ -628,6 +633,7 @@
 				846C571B1739CD5B008B1704 /* AFHTTPClient+RACSupport.m in Sources */,
 				846C571C1739CD5B008B1704 /* AFURLConnectionOperation+RACSupport.m in Sources */,
 				846C571F1739CDD0008B1704 /* RAFHTTPClientSpec.m in Sources */,
+				847D6A131752D625004E09C2 /* AFHTTPClient+RAFMocking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,6 +715,7 @@
 				);
 				INFOPLIST_FILE = "RAFNetworking Tests/RAFNetworking Tests-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = octest;
@@ -732,6 +739,7 @@
 				);
 				INFOPLIST_FILE = "RAFNetworking Tests/RAFNetworking Tests-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = octest;
@@ -841,6 +849,7 @@
 				846C56F21739CD20008B1704 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84EAA0AF1704E1E700E98BFE /* Build configuration list for PBXProject "Reactive AFNetworking Example" */ = {
 			isa = XCConfigurationList;
