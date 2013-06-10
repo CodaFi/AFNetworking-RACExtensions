@@ -47,10 +47,7 @@ extern NSString * const RAFNetworkingOperationErrorKey;
 /*!
  * The Reactive version of AFHTTPClient's -enqueueHTTPRequestOperation:.  The enqueued request may 
  * be started immediately, and is eagerly evaluated by NSOperationQueue, so it is highly recommended
- * that you subscribe immediately.  However, it is not always possible to do so, so if the signal
- * returned from this method is retained, the underlying subject should still maintain the results
- * or errors if it has completed.  This means that even though the operation's request may have 
- * expired, any new subscribers will still recieve the results of processing.
+ * that you subscribe immediately.
  * 
  * In order to deliver the proper events to subscribers, RAC will overwrite any completion blocks 
  * you may have set.  If you would like to preserve them, and have the extension call them when 
@@ -66,9 +63,6 @@ extern NSString * const RAFNetworkingOperationErrorKey;
  * progress of batch signals is unavailable at this time due to API difficulties.  The majority of 
  * the work to do such progress sending is defined in RACSubscriber+AFProgressCallbacks, however
  * it is strongly advised that that section of the extensions not be used.  
- *
- * Unlike the singular version of this method, values are not replayed in the underlying subject and 
- * do not get sent to any new subscribers.
  *
  * In order to deliver the proper events to subscribers, RAC will overwrite any completion blocks
  * you may have set.  If you would like to preserve them, and have the extension call them when

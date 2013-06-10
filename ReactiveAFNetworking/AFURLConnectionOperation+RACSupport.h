@@ -17,7 +17,7 @@
 
 /*!
  * Used to internally overwrite the completion and failure blocks of any AFHTTPRequestOperation and
- * RAC'ify them to return a subject.  
+ * RAC'ify them to return a signal.
  */
 - (RACSignal*)rac_overrideHTTPCompletionBlock;
 
@@ -67,11 +67,6 @@
 
 @end
 
-
-/*!
- * All signals returned from the following categories can be replayed so long as the returned signal
- * is retained.  The following methods also immediately -start any operations they create.
- */
 @interface AFJSONRequestOperation (RACSupport)
 
 /*!
