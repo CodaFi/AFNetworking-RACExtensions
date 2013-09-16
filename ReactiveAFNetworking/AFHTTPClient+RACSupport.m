@@ -72,7 +72,7 @@ NSString * const RAFNetworkingOperationErrorKey = @"AFHTTPRequestOperation";
 
 #ifdef _SYSTEMCONFIGURATION_H
 - (RACSignal *)networkReachabilityStatusSignal {
-	return RACAble(self.networkReachabilityStatus);
+	return RACObserve(self, networkReachabilityStatus);
 }
 #endif
 
