@@ -48,7 +48,7 @@
 	self.statusTextView.editable = NO;
 	self.statusTextView.font = [UIFont fontWithName:@"Helvetica" size:20.0f];
 	[self.statusTextView setTextAlignment:NSTextAlignmentCenter];
-	[self.statusTextView rac_liftSelector:@selector(setText:) withObjects:self.statusSignal];
+	[self.statusTextView rac_liftSelector:@selector(setText:) withSignals:self.statusSignal, nil];
 	
 	self.afLogoImageView = [[UIImageView alloc]initWithFrame:CGRectOffset(remainder, 0, CGRectGetHeight(UIScreen.mainScreen.bounds))];
 	self.startTestingButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -99,7 +99,7 @@
 	[self.statusSignal sendNext:@"Fetching AFNetworking Logo..."];
 	
 	RACSubject *imageSubject = [RACSubject subject];
-	[self.afLogoImageView rac_liftSelector:@selector(setImage:) withObjects:imageSubject];
+	[self.afLogoImageView rac_liftSelector:@selector(setImage:) withSignals:imageSubject, nil];
 	
 	NSURLRequest *imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://twimg0-a.akamaihd.net/profile_images/2331579964/jrqzn4q29vwy4mors75s.png"]];
 
