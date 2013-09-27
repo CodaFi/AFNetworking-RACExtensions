@@ -311,6 +311,7 @@
 				84EAA0B51704E1E700E98BFE /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		84EAA0B51704E1E700E98BFE /* Products */ = {
 			isa = PBXGroup;
