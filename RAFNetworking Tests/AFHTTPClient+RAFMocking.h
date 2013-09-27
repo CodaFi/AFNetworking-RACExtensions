@@ -17,4 +17,5 @@ extern NSString *const AFHTTPClientMockResponse;
 - (RACSignal *)mock_putPath:(NSString *)path parameters:(NSDictionary *)parameters;
 - (RACSignal *)mock_deletePath:(NSString *)path parameters:(NSDictionary *)parameters;
 - (RACSignal *)mock_patchPath:(NSString *)path parameters:(NSDictionary *)parameters;
+
 @end

@@ -30,12 +30,12 @@
 
 - (id)init
 {
-    self = [super init];
-    if (self) {
+	self = [super init];
+	if (self) {
 		//Signal for the textview's text
 		_statusSignal = [RACSubject subject];
-    }
-    return self;
+	}
+	return self;
 }
 
 - (void)viewDidLoad

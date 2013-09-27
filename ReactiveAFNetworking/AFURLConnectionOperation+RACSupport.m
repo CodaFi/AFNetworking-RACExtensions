@@ -56,15 +56,15 @@
 + (RACSignal *)rac_startImageRequestOperationWithRequest:(NSURLRequest *)urlRequest {
 	
 	RACReplaySubject *subject = [RACReplaySubject replaySubjectWithCapacity:1];
-    
+	
 	[(AFURLConnectionOperation*)[self imageRequestOperationWithRequest:urlRequest imageProcessingBlock:NULL
 															   success:^(NSURLRequest *request, NSHTTPURLResponse *response,
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
-                                                                         UIImage *image
+																		 UIImage *image
 #elif defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
-                                                                         NSImage *image
+																		 NSImage *image
 #endif
-                                                                         ) {
+																		 ) {
 		[subject sendNext:RACTuplePack(image, response)];
 		[subject sendCompleted];
 	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
