@@ -16,58 +16,71 @@ NSString * const RAFNetworkingOperationErrorKey = @"AFHTTPRequestOperation";
 
 - (RACSignal *)rac_enqueueHTTPRequestOperation:(AFHTTPRequestOperation *)requestOperation
 {
-    [self enqueueHTTPRequestOperation:requestOperation];
-    return [requestOperation rac_overrideHTTPCompletionBlock];
+	[self enqueueHTTPRequestOperation:requestOperation];
+	return [requestOperation rac_overrideHTTPCompletionBlock];
 }
 
 - (RACSignal *)rac_enqueueBatchOfHTTPRequestOperations:(NSArray *)requestOperations
 {
-    RACSignal *signal = [RACSignal merge:[requestOperations.rac_sequence map:^RACStream *(AFHTTPRequestOperation *request) {
-        return [request rac_overrideHTTPCompletionBlock];
-    }]];
-    [self enqueueBatchOfHTTPRequestOperations:requestOperations progressBlock:NULL completionBlock:NULL];
+	RACSignal *signal = [RACSignal merge:[requestOperations.rac_sequence map:^RACStream *(AFHTTPRequestOperation *request) {
+		return [request rac_overrideHTTPCompletionBlock];
+	}]];
+	[self enqueueBatchOfHTTPRequestOperations:requestOperations progressBlock:NULL completionBlock:NULL];
 	
-    return signal; 
+	return signal; 
 }
 
 - (RACSignal *)rac_getPath:(NSString *)path parameters:(NSDictionary *)parameters {
-    return [self rac_requestPath:path parameters:parameters method:@"GET"];
+	return [[self
+		rac_requestPath:path parameters:parameters method:@"GET"]
+		setNameWithFormat:@"<%@: %p> -rac_getPath: %@, parameters: %@", self.class, self, path, parameters];
+
 }
 
 - (RACSignal *)rac_postPath:(NSString *)path parameters:(NSDictionary *)parameters {
-    return [self rac_requestPath:path parameters:parameters method:@"POST"];
+	return [[self
+		rac_requestPath:path parameters:parameters method:@"POST"]
+		setNameWithFormat:@"<%@: %p> -rac_postPath: %@, parameters: %@", self.class, self, path, parameters];
+
 }
 
 - (RACSignal *)rac_putPath:(NSString *)path parameters:(NSDictionary *)parameters {
-    return [self rac_requestPath:path parameters:parameters method:@"PUT"];
+	return [[self
+		rac_requestPath:path parameters:parameters method:@"PUT"]
+		setNameWithFormat:@"<%@: %p> -rac_putPath: %@, parameters: %@", self.class, self, path, parameters];
+
 }
 
 - (RACSignal *)rac_deletePath:(NSString *)path parameters:(NSDictionary *)parameters {
-    return [self rac_requestPath:path parameters:parameters method:@"DELETE"];
+	return [[self
+		rac_requestPath:path parameters:parameters method:@"DELETE"]
+		setNameWithFormat:@"<%@: %p> -rac_deletePath: %@, parameters: %@", self.class, self, path, parameters];
 }
 
 - (RACSignal *)rac_patchPath:(NSString *)path parameters:(NSDictionary *)parameters {
-    return [self rac_requestPath:path parameters:parameters method:@"PATCH"];
+	return [[self
+		rac_requestPath:path parameters:parameters method:@"PATCH"]
+		setNameWithFormat:@"<%@: %p> -rac_patchPath: %@, parameters: %@", self.class, self, path, parameters];
 }
 
 - (RACSignal *)rac_requestPath:(NSString *)path parameters:(NSDictionary *)parameters method:(NSString *)method {
-    return [RACSignal createSignal:^(id<RACSubscriber> subscriber) {
-        NSURLRequest *request = [self requestWithMethod:method path:path parameters:parameters];
-        AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:^(id operation, id result) {
-            [subscriber sendNext:RACTuplePack(operation, result)];
-            [subscriber sendCompleted];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSMutableDictionary *userInfo = [error.userInfo mutableCopy] ?: [NSMutableDictionary dictionary];
-            userInfo[RAFNetworkingOperationErrorKey] = operation;
-            [subscriber sendError:[NSError errorWithDomain:error.domain code:error.code userInfo:userInfo]];
-        }];
+	return [RACSignal createSignal:^(id<RACSubscriber> subscriber) {
+		NSURLRequest *request = [self requestWithMethod:method path:path parameters:parameters];
+		AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:^(id operation, id result) {
+			[subscriber sendNext:RACTuplePack(operation, result)];
+			[subscriber sendCompleted];
+		} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+			NSMutableDictionary *userInfo = [error.userInfo mutableCopy] ?: [NSMutableDictionary dictionary];
+			userInfo[RAFNetworkingOperationErrorKey] = operation;
+			[subscriber sendError:[NSError errorWithDomain:error.domain code:error.code userInfo:userInfo]];
+		}];
 
-        [self enqueueHTTPRequestOperation:operation];
+		[self enqueueHTTPRequestOperation:operation];
 
-        return [RACDisposable disposableWithBlock:^{
-            [operation cancel];
-        }];
-    }];
+		return [RACDisposable disposableWithBlock:^{
+			[operation cancel];
+		}];
+	}];
 }
 
 #ifdef _SYSTEMCONFIGURATION_H
