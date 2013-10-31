@@ -9,7 +9,7 @@
 #import "RAFNMainViewController.h"
 #import "RACAFNetworking.h"
 #import <ReactiveCocoa/UIControl+RACSignalSupport.h>
-#import "AFURLConnectionOperation+RACSupport.h"
+#import "AFHTTPRequestOperation+RACSupport.h"
 #import <AFNetworking/AFURLResponseSerialization.h>
 
 //Preserve double completion blocks for testing
