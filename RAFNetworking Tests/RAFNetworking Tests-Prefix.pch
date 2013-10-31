@@ -3,9 +3,7 @@
 //
 
 #ifdef __OBJC__
-	#import <Cocoa/Cocoa.h>
 	#define EXP_SHORTHAND
-	#import "Expecta.h"
-	#import "Specta.h"
-	#import "AFHTTPClient+RACSupport.h"
+	#import <Expecta.h>
+	#import <Specta.h>
 #endif

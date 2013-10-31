@@ -8,27 +8,27 @@
 
 NSString *const AFHTTPClientMockResponse = @"AFHTTPClientMockResponse";
 
-#import "AFHTTPClient+RAFMocking.h"
+#import "AFHTTPRequestOperationManager+RAFMocking.h"
 
-@implementation AFHTTPClient (RAFMocking)
+@implementation AFHTTPRequestOperationManager (RAFMocking)
 
-- (RACSignal *)mock_getPath:(NSString *)path parameters:(NSDictionary *)parameters {
+- (RACSignal *)mock_GET:(NSString *)path parameters:(NSDictionary *)parameters {
 	return [self mock_requestPath:path parameters:parameters method:@"GET"];
 }
 
-- (RACSignal *)mock_postPath:(NSString *)path parameters:(NSDictionary *)parameters {
+- (RACSignal *)mock_POST:(NSString *)path parameters:(NSDictionary *)parameters {
 	return [self mock_requestPath:path parameters:parameters method:@"POST"];
 }
 
-- (RACSignal *)mock_putPath:(NSString *)path parameters:(NSDictionary *)parameters {
+- (RACSignal *)mock_PUT:(NSString *)path parameters:(NSDictionary *)parameters {
 	return [self mock_requestPath:path parameters:parameters method:@"PUT"];
 }
 
-- (RACSignal *)mock_deletePath:(NSString *)path parameters:(NSDictionary *)parameters {
+- (RACSignal *)mock_DELETE:(NSString *)path parameters:(NSDictionary *)parameters {
 	return [self mock_requestPath:path parameters:parameters method:@"DELETE"];
 }
 
-- (RACSignal *)mock_patchPath:(NSString *)path parameters:(NSDictionary *)parameters {
+- (RACSignal *)mock_PATCH:(NSString *)path parameters:(NSDictionary *)parameters {
 	return [self mock_requestPath:path parameters:parameters method:@"PATCH"];
 }
 
