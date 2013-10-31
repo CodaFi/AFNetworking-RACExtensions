@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 CodaFi. All rights reserved.
 //
 
-#import "AFURLConnectionOperation+RACSupport.h"
+#import "AFHTTPRequestOperation+RACSupport.h"
 
 NSString * const RAFNetworkingOperationErrorKey = @"AFHTTPRequestOperation";
 
