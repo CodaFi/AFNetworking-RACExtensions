@@ -18,6 +18,7 @@ Choose AFNetworking, then choose AFNetworking+RACExtensions, for your next proje
 
 - [Install Cocoapods](http://www.cocoapods.org/)
 - Create a Podfile for your project
+
 ```
 pod 'AFNetworking', '~>1.0'
 pod 'ReactiveCocoa', '~>2.1'
