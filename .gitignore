@@ -9,10 +9,18 @@ build/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-*.xcworkspace
-!default.xcworkspace
 xcuserdata
 profile
 *.moved-aside
 DerivedData
 .idea/
+xcshareddata
+
+# Cocoapods
+Podfile.lock
+Pods/
+
+# Emacs
+*~
+.#*
+[#]*[#]
