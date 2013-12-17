@@ -1,6 +1,6 @@
 <snark>
 
-AFNetworking-RACExtensions is a delightful extension to the AFNetworking classes for iOS and Mac OS X. It's built on top of [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa), [AFNetworking](https://github.com/AFNetworking/AFNetworking), and other familiar foundation technologies. It provides an extension to the underlying modular architecture with well-designed, wrapper APIs that are… (easy?) to use. For example, here's how easy it is to get JSON from a URL:
+AFNetworking-RACExtensions is a delightful extension to the AFNetworking classes for iOS and Mac OS X. It's built on top of [ReactiveCocoa 2.1](https://github.com/ReactiveCocoa/ReactiveCocoa), [AFNetworking 1.x](https://github.com/AFNetworking/AFNetworking), and other familiar foundation technologies. It provides an extension to the underlying modular architecture with well-designed, wrapper APIs that are… (easy?) to use. For example, here's how easy it is to get JSON from a URL:
 
 ``` objective-c
 NSURL *url = [NSURL URLWithString:@"https://alpha-api.app.net/stream/0/posts/stream/global"];
@@ -16,23 +16,34 @@ Choose AFNetworking, then choose AFNetworking+RACExtensions, for your next proje
 
 ## How To Get Started
 
-- [Download AFNetworking](https://github.com/AFNetworking/AFNetworking/zipball/master) and try out the included Mac and iPhone example apps
-- Read the ["Getting Started" guide](https://github.com/AFNetworking/AFNetworking/wiki/Getting-Started-with-AFNetworking), [FAQ](https://github.com/AFNetworking/AFNetworking/wiki/AFNetworking-FAQ), or [other articles in the wiki](https://github.com/AFNetworking/AFNetworking/wiki)
-- Check out the [complete documentation](http://afnetworking.github.com/AFNetworking/) for a comprehensive look at the APIs available in AFNetworking
-- Watch the [NSScreencast episode about AFNetworking](http://nsscreencast.com/episodes/6-afnetworking) for a quick introduction to how to use it in your application
-- Questions? [Stack Overflow](http://stackoverflow.com/questions/tagged/afnetworking) is the best place to find answers
-- [Download AFNetworking+RACExtensions](https://github.com/CodaFi/AFNetworking-RACExtensions/archive/master.zip) and try out the included iPhone sample app.
-- Integrate it with your project (don't forget to run a `git submodule update -i --recursive`).
-- Or integrate with [CocoaPods](https://github.com/CocoaPods/CocoaPods): ```pod 'AFNetworking-RACExtensions', '~>0.0.1'```
-- Profit immensely.
+- [Install Cocoapods](http://www.cocoapods.org/)
+- Create a Podfile for your project
+
+```
+pod 'AFNetworking', '~>1.0'
+pod 'ReactiveCocoa', '~>2.1'
+pod 'AFNetworking-RACExtensions', :git => 'https://github.com/CodaFi/AFNetworking-RACExtensions.git'
+```
+- Run `pod install` in the root of your project so that Cocoapods will install the necessary files
+- Be _sure_ to open the `.xcworkspace` file created by Cocoapods rather than the `.xcodeproj` file. Failure to do so will result in build problems!
 
 ## Overview
 
-_BEGIN_HTML_DECLS
-
-Read the headers. Honestly, they have some really good explanations of how to use things.
-
-_END_HTML_DECLS
+- AFNetworking
+    * Read the ["Getting Started" guide](https://github.com/AFNetworking/AFNetworking/wiki/Getting-Started-with-AFNetworking), 
+     [FAQ](https://github.com/AFNetworking/AFNetworking/wiki/AFNetworking-FAQ), or [other articles in the wiki](https://github.com/AFNetworking/AFNetworking/wiki)
+    * Check out the [complete documentation](http://afnetworking.github.com/AFNetworking/) for a comprehensive look at the APIs available in AFNetworking
+    * Watch the [NSScreencast episode about AFNetworking](http://nsscreencast.com/episodes/6-afnetworking) for a quick introduction to how to use it in your application
+    * Questions? [Stack Overflow](http://stackoverflow.com/questions/tagged/afnetworking) is the best place to find answers
+- ReactiveCocoa
+    * Read the [Introduction](https://github.com/ReactiveCocoa/ReactiveCocoa#introduction)
+    * Read the [Framework Overview](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/master/Documentation/FrameworkOverview.md)
+    * Read the [Design Guidelines](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/master/Documentation/DesignGuidelines.md)
+    * [NSHipster](http://www.nshipster.com) wrote a [brief ReacticeCocoa tutorial](http://nshipster.com/reactivecocoa/)
+    * Ash Furrow wrote an [overview](http://www.teehanlax.com/blog/reactivecocoa/) and a ["Getting Started" guide](http://www.teehanlax.com/blog/getting-started-with-reactivecocoa/) about ReactiveCocoa
+    * As always [Stack Overflow](http://stackoverflow.com/questions/tagged/reactive%2Dcocoa) is the best place to find answers
+- AFNetworking-RACExtensions
+    * Read the headers. Honestly, they have some really good explanations of how to use things.
 
 ## Example Usage
 
