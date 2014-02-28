@@ -1,5 +1,5 @@
 //
-//  AFHTTPRequestOperation+RACSupport.m
+//  AFURLConnectionOperation+RACSupport.m
 //  Reactive AFNetworking Example
 //
 //  Created by Robert Widmann on 3/28/13.
@@ -11,12 +11,12 @@
 
 @implementation AFURLConnectionOperation (RACSupport)
 
-- (RACSignal*)rac_start {
+- (RACSignal *)rac_start {
 	[self start];
 	return [self rac_overrideHTTPCompletionBlock];
 }
 
-- (RACSignal*)rac_overrideHTTPCompletionBlock {
+- (RACSignal *)rac_overrideHTTPCompletionBlock {
 	RACReplaySubject *subject = [RACReplaySubject replaySubjectWithCapacity:1];
 	[subject setNameWithFormat:@"-rac_start: %@", self.request.URL];
 	
@@ -50,101 +50,3 @@
 
 
 @end
-
-@implementation AFImageRequestOperation (RACSupport)
-
-+ (RACSignal *)rac_startImageRequestOperationWithRequest:(NSURLRequest *)urlRequest {
-	
-	RACReplaySubject *subject = [RACReplaySubject replaySubjectWithCapacity:1];
-	
-	[(AFURLConnectionOperation*)[self imageRequestOperationWithRequest:urlRequest imageProcessingBlock:NULL
-															   success:^(NSURLRequest *request, NSHTTPURLResponse *response,
-#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
-																		 UIImage *image
-#elif defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
-																		 NSImage *image
-#endif
-																		 ) {
-		[subject sendNext:RACTuplePack(image, response)];
-		[subject sendCompleted];
-	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-		[subject sendError:error];
-	}]start];
-	
-	return subject;
-}
-
-@end
-
-@implementation AFJSONRequestOperation (RACSupport)
-
-+ (RACSignal *)rac_startJSONRequestOperationWithRequest:(NSURLRequest *)urlRequest {
-	
-	RACReplaySubject *subject = [RACReplaySubject replaySubjectWithCapacity:1];
-	
-	[(AFURLConnectionOperation*)[self JSONRequestOperationWithRequest:urlRequest
-															  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-		[subject sendNext:RACTuplePack(JSON, response)];
-		[subject sendCompleted];
-	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-		[subject sendError:error];
-	}]start];
-	
-	return subject;
-}
-
-@end
-
-@implementation AFPropertyListRequestOperation (RACSupport)
-
-+ (RACSignal *)rac_startPropertyListRequestOperationWithRequest:(NSURLRequest *)urlRequest {
-	
-	RACReplaySubject *subject = [RACReplaySubject replaySubjectWithCapacity:1];
-
-	[(AFURLConnectionOperation*)[self propertyListRequestOperationWithRequest:urlRequest
-																	  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id propertyList) {
-		[subject sendNext:RACTuplePack(propertyList, response)];
-		[subject sendCompleted];
-	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id propertyList) {
-		[subject sendError:error];
-	}]start];
-	
-	return subject;
-}
-
-@end
-
-@implementation AFXMLRequestOperation (RACSupport)
-
-+ (RACSignal *)rac_startXMLParserRequestOperationWithRequest:(NSURLRequest *)urlRequest {
-	RACReplaySubject *subject = [RACReplaySubject replaySubjectWithCapacity:1];
-	
-	[(AFURLConnectionOperation*)[self XMLParserRequestOperationWithRequest:urlRequest
-																   success:^(NSURLRequest *request, NSHTTPURLResponse *response, id xmlEntity) {
-		[subject sendNext:RACTuplePack(xmlEntity, response)];
-		[subject sendCompleted];
-	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id xmlEntity) {
-		[subject sendError:error];
-	}]start];
-	
-	return subject;
-}
-
-#ifdef __MAC_OS_X_VERSION_MIN_REQUIRED
-+ (instancetype)rac_startXMLDocumentRequestOperationWithRequest:(NSURLRequest *)urlRequest {
-	RACReplaySubject *subject = [RACReplaySubject replaySubjectWithCapacity:1];
-	
-	[(AFURLConnectionOperation*)[self XMLDocumentRequestOperationWithRequest:urlRequest
-																   success:^(NSURLRequest *request, NSHTTPURLResponse *response, id xmlEntity) {
-	   [subject sendNext:RACTuplePack(xmlEntity, response)];
-	   [subject sendCompleted];
-	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id xmlEntity) {
-	   [subject sendError:error];
-   }]start];
-	
-	return subject;
-}
-#endif
-
-@end
-

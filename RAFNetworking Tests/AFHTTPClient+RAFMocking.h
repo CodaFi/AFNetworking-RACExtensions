@@ -8,14 +8,15 @@
 
 extern NSString *const AFHTTPClientMockResponse;
 
-#import "AFHTTPClient.h"
+#import <AFNetworking/AFHTTPRequestOperationManager.h>
+#import <ReactiveCocoa>
 
-@interface AFHTTPClient (RAFMocking)
+@interface AFHTTPRequestOperationManager (RAFMocking)
 
-- (RACSignal *)mock_getPath:(NSString *)path parameters:(NSDictionary *)parameters;
-- (RACSignal *)mock_postPath:(NSString *)path parameters:(NSDictionary *)parameters;
-- (RACSignal *)mock_putPath:(NSString *)path parameters:(NSDictionary *)parameters;
-- (RACSignal *)mock_deletePath:(NSString *)path parameters:(NSDictionary *)parameters;
-- (RACSignal *)mock_patchPath:(NSString *)path parameters:(NSDictionary *)parameters;
+- (RACSignal *)mock_GET:(NSString *)path parameters:(NSDictionary *)parameters;
+- (RACSignal *)mock_POST:(NSString *)path parameters:(NSDictionary *)parameters;
+- (RACSignal *)mock_PUT:(NSString *)path parameters:(NSDictionary *)parameters;
+- (RACSignal *)mock_DELETE:(NSString *)path parameters:(NSDictionary *)parameters;
+- (RACSignal *)mock_PATCH:(NSString *)path parameters:(NSDictionary *)parameters;
 
 @end

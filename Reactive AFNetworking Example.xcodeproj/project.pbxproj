@@ -11,12 +11,12 @@
 		846C56E21739CD20008B1704 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846C56E11739CD20008B1704 /* Cocoa.framework */; };
 		846C56EC1739CD20008B1704 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 846C56EA1739CD20008B1704 /* InfoPlist.strings */; };
 		846C57181739CD50008B1704 /* libExpecta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 846C56FE1739CD39008B1704 /* libExpecta.a */; };
-		846C571A1739CD50008B1704 /* libSpecta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 846C57191739CD50008B1704 /* libSpecta.a */; };
-		846C571B1739CD5B008B1704 /* AFHTTPClient+RACSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EAA16D17056B4C00E98BFE /* AFHTTPClient+RACSupport.m */; };
+		846C571B1739CD5B008B1704 /* AFHTTPRequestOperationManager+RACSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EAA16D17056B4C00E98BFE /* AFHTTPRequestOperationManager+RACSupport.m */; };
 		846C571C1739CD5B008B1704 /* AFURLConnectionOperation+RACSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EAA16F17056B4C00E98BFE /* AFURLConnectionOperation+RACSupport.m */; };
 		846C571F1739CDD0008B1704 /* RAFHTTPClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C571E1739CDD0008B1704 /* RAFHTTPClientSpec.m */; };
 		846C57291739D04C008B1704 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84EAA1001705028000E98BFE /* ReactiveCocoa.framework */; };
 		847D6A131752D625004E09C2 /* AFHTTPClient+RAFMocking.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D6A111752D625004E09C2 /* AFHTTPClient+RAFMocking.m */; };
+		84AAF21F18C14B940032A6F5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AAF21E18C14B940032A6F5 /* Security.framework */; };
 		84C5F65618512C8B0023E25D /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C5F64418512C8B0023E25D /* AFHTTPRequestOperation.m */; };
 		84C5F65718512C8B0023E25D /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C5F64618512C8B0023E25D /* AFHTTPRequestOperationManager.m */; };
 		84C5F65818512C8B0023E25D /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C5F64818512C8B0023E25D /* AFHTTPSessionManager.m */; };
@@ -39,7 +39,7 @@
 		84EAA11A17052E0900E98BFE /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84EAA11917052E0800E98BFE /* MobileCoreServices.framework */; };
 		84EAA16A17056B3D00E98BFE /* RAFNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EAA16717056B3D00E98BFE /* RAFNAppDelegate.m */; };
 		84EAA16B17056B3D00E98BFE /* RAFNMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EAA16917056B3D00E98BFE /* RAFNMainViewController.m */; };
-		84EAA17317056B4C00E98BFE /* AFHTTPClient+RACSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EAA16D17056B4C00E98BFE /* AFHTTPClient+RACSupport.m */; };
+		84EAA17317056B4C00E98BFE /* AFHTTPRequestOperationManager+RACSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EAA16D17056B4C00E98BFE /* AFHTTPRequestOperationManager+RACSupport.m */; };
 		84EAA17417056B4C00E98BFE /* AFURLConnectionOperation+RACSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EAA16F17056B4C00E98BFE /* AFURLConnectionOperation+RACSupport.m */; };
 		84EAA17517056B4C00E98BFE /* RACSubscriber+AFProgressCallbacks.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EAA17217056B4C00E98BFE /* RACSubscriber+AFProgressCallbacks.m */; };
 /* End PBXBuildFile section */
@@ -185,10 +185,10 @@
 		846C56F01739CD20008B1704 /* RAFNetworking Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RAFNetworking Tests-Prefix.pch"; sourceTree = "<group>"; };
 		846C56F61739CD39008B1704 /* Expecta.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Expecta.xcodeproj; path = External/Expecta/Expecta.xcodeproj; sourceTree = SOURCE_ROOT; };
 		846C57051739CD3D008B1704 /* Specta.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Specta.xcodeproj; path = External/Specta/Specta.xcodeproj; sourceTree = SOURCE_ROOT; };
-		846C57191739CD50008B1704 /* libSpecta.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSpecta.a; path = ../External/ReactiveCocoa/external/specta/build/Release/libSpecta.a; sourceTree = "<group>"; };
 		846C571E1739CDD0008B1704 /* RAFHTTPClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAFHTTPClientSpec.m; sourceTree = "<group>"; };
 		847D6A111752D625004E09C2 /* AFHTTPClient+RAFMocking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPClient+RAFMocking.m"; sourceTree = "<group>"; };
 		847D6A121752D625004E09C2 /* AFHTTPClient+RAFMocking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPClient+RAFMocking.h"; sourceTree = "<group>"; };
+		84AAF21E18C14B940032A6F5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		84C5F64318512C8B0023E25D /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		84C5F64418512C8B0023E25D /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = AFNetworking/AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		84C5F64518512C8B0023E25D /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperationManager.h; path = AFNetworking/AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -226,8 +226,8 @@
 		84EAA16717056B3D00E98BFE /* RAFNAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RAFNAppDelegate.m; path = "Reactive AFNetworking Example/RAFNAppDelegate.m"; sourceTree = SOURCE_ROOT; };
 		84EAA16817056B3D00E98BFE /* RAFNMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RAFNMainViewController.h; path = "Reactive AFNetworking Example/RAFNMainViewController.h"; sourceTree = SOURCE_ROOT; };
 		84EAA16917056B3D00E98BFE /* RAFNMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RAFNMainViewController.m; path = "Reactive AFNetworking Example/RAFNMainViewController.m"; sourceTree = SOURCE_ROOT; };
-		84EAA16C17056B4C00E98BFE /* AFHTTPClient+RACSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPClient+RACSupport.h"; sourceTree = "<group>"; };
-		84EAA16D17056B4C00E98BFE /* AFHTTPClient+RACSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPClient+RACSupport.m"; sourceTree = "<group>"; };
+		84EAA16C17056B4C00E98BFE /* AFHTTPRequestOperationManager+RACSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPRequestOperationManager+RACSupport.h"; sourceTree = "<group>"; };
+		84EAA16D17056B4C00E98BFE /* AFHTTPRequestOperationManager+RACSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPRequestOperationManager+RACSupport.m"; sourceTree = "<group>"; };
 		84EAA16E17056B4C00E98BFE /* AFURLConnectionOperation+RACSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFURLConnectionOperation+RACSupport.h"; sourceTree = "<group>"; };
 		84EAA16F17056B4C00E98BFE /* AFURLConnectionOperation+RACSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFURLConnectionOperation+RACSupport.m"; sourceTree = "<group>"; };
 		84EAA17017056B4C00E98BFE /* RACAFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RACAFNetworking.h; sourceTree = "<group>"; };
@@ -241,7 +241,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				846C57291739D04C008B1704 /* ReactiveCocoa.framework in Frameworks */,
-				846C571A1739CD50008B1704 /* libSpecta.a in Frameworks */,
 				846C57181739CD50008B1704 /* libExpecta.a in Frameworks */,
 				846C56E01739CD20008B1704 /* SenTestingKit.framework in Frameworks */,
 				846C56E21739CD20008B1704 /* Cocoa.framework in Frameworks */,
@@ -252,6 +251,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84AAF21F18C14B940032A6F5 /* Security.framework in Frameworks */,
 				84EAA11A17052E0900E98BFE /* MobileCoreServices.framework in Frameworks */,
 				84EAA11817052D8C00E98BFE /* SystemConfiguration.framework in Frameworks */,
 				84EAA1071705034300E98BFE /* libReactiveCocoa-iOS.a in Frameworks */,
@@ -293,7 +293,6 @@
 				846C56E91739CD20008B1704 /* RAFNetworking Tests-Info.plist */,
 				846C56EA1739CD20008B1704 /* InfoPlist.strings */,
 				846C56F01739CD20008B1704 /* RAFNetworking Tests-Prefix.pch */,
-				846C57191739CD50008B1704 /* libSpecta.a */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -345,6 +344,7 @@
 		84EAA0B61704E1E700E98BFE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84AAF21E18C14B940032A6F5 /* Security.framework */,
 				84EAA11917052E0800E98BFE /* MobileCoreServices.framework */,
 				84EAA11717052D8C00E98BFE /* SystemConfiguration.framework */,
 				84EAA0B71704E1E700E98BFE /* UIKit.framework */,
@@ -402,8 +402,8 @@
 		84EAA12317054E2B00E98BFE /* ReactiveAFNetworking */ = {
 			isa = PBXGroup;
 			children = (
-				84EAA16C17056B4C00E98BFE /* AFHTTPClient+RACSupport.h */,
-				84EAA16D17056B4C00E98BFE /* AFHTTPClient+RACSupport.m */,
+				84EAA16C17056B4C00E98BFE /* AFHTTPRequestOperationManager+RACSupport.h */,
+				84EAA16D17056B4C00E98BFE /* AFHTTPRequestOperationManager+RACSupport.m */,
 				84EAA16E17056B4C00E98BFE /* AFURLConnectionOperation+RACSupport.h */,
 				84EAA16F17056B4C00E98BFE /* AFURLConnectionOperation+RACSupport.m */,
 				84EAA17017056B4C00E98BFE /* RACAFNetworking.h */,
@@ -487,7 +487,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = RAFN;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = CodaFi;
 			};
 			buildConfigurationList = 84EAA0AF1704E1E700E98BFE /* Build configuration list for PBXProject "Reactive AFNetworking Example" */;
@@ -680,7 +680,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				846C571B1739CD5B008B1704 /* AFHTTPClient+RACSupport.m in Sources */,
+				846C571B1739CD5B008B1704 /* AFHTTPRequestOperationManager+RACSupport.m in Sources */,
 				846C571C1739CD5B008B1704 /* AFURLConnectionOperation+RACSupport.m in Sources */,
 				846C571F1739CDD0008B1704 /* RAFHTTPClientSpec.m in Sources */,
 				847D6A131752D625004E09C2 /* AFHTTPClient+RAFMocking.m in Sources */,
@@ -699,7 +699,7 @@
 				84C5F65B18512C8B0023E25D /* AFURLConnectionOperation.m in Sources */,
 				84C5F65818512C8B0023E25D /* AFHTTPSessionManager.m in Sources */,
 				84C5F65C18512C8B0023E25D /* AFURLRequestSerialization.m in Sources */,
-				84EAA17317056B4C00E98BFE /* AFHTTPClient+RACSupport.m in Sources */,
+				84EAA17317056B4C00E98BFE /* AFHTTPRequestOperationManager+RACSupport.m in Sources */,
 				84EAA17417056B4C00E98BFE /* AFURLConnectionOperation+RACSupport.m in Sources */,
 				84EAA17517056B4C00E98BFE /* RACSubscriber+AFProgressCallbacks.m in Sources */,
 				84C5F65718512C8B0023E25D /* AFHTTPRequestOperationManager.m in Sources */,
@@ -747,7 +747,6 @@
 		846C56F11739CD20008B1704 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -770,7 +769,6 @@
 		846C56F21739CD20008B1704 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
@@ -852,15 +850,19 @@
 		84EAA0D21704E1E700E98BFE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/External\"/**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Reactive AFNetworking Example/Reactive AFNetworking Example-Prefix.pch";
 				INFOPLIST_FILE = "Reactive AFNetworking Example/Reactive AFNetworking Example-Info.plist";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/External\"/**";
 				OTHER_CFLAGS = "-all_load";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/External\"";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -868,9 +870,12 @@
 		84EAA0D31704E1E700E98BFE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/External\"/**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Reactive AFNetworking Example/Reactive AFNetworking Example-Prefix.pch";
 				INFOPLIST_FILE = "Reactive AFNetworking Example/Reactive AFNetworking Example-Info.plist";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/External\"/**";
 				OTHER_CFLAGS = (
 					"-DNS_BLOCK_ASSERTIONS=1",
 					"-all_load",
@@ -880,6 +885,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/External\"";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

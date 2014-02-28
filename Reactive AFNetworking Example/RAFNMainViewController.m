@@ -18,7 +18,7 @@
 @property (nonatomic, strong) UITextView *statusTextView;
 @property (nonatomic, strong) UIImageView *afLogoImageView;
 @property (nonatomic, strong) UIButton *startTestingButton;
-@property (nonatomic, strong) AFHTTPClient *httpClient;
+@property (nonatomic, strong) AFHTTPRequestOperationManager *httpClient;
 @property (nonatomic, assign) BOOL isTesting;
 
 @property (nonatomic, strong) RACDisposable *currentDisposable;
@@ -74,8 +74,9 @@
 	[self.view addSubview:self.startTestingButton];
 	
 	//Get network status
-	self.httpClient = [[AFHTTPClient alloc]initWithBaseURL:[NSURL URLWithString:@"https://www.google.com"]];
-	
+	self.httpClient = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:[NSURL URLWithString:@"https://www.google.com"]];
+	self.httpClient.responseSerializer = [AFJSONResponseSerializer serializer];
+
 	[self.httpClient.networkReachabilityStatusSignal subscribeNext:^(NSNumber *status) {
 		AFNetworkReachabilityStatus networkStatus = [status intValue];
 		switch (networkStatus) {
@@ -101,11 +102,12 @@
 	RACSubject *imageSubject = [RACSubject subject];
 	[self.afLogoImageView rac_liftSelector:@selector(setImage:) withSignals:imageSubject, nil];
 	
-	NSURLRequest *imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://twimg0-a.akamaihd.net/profile_images/2331579964/jrqzn4q29vwy4mors75s.png"]];
+	NSString *urlStr = @"https://twimg0-a.akamaihd.net/profile_images/2331579964/jrqzn4q29vwy4mors75s.png";
+	self.httpClient.responseSerializer = [AFImageResponseSerializer serializer];
 
-	_currentDisposable = [[[AFImageRequestOperation rac_startImageRequestOperationWithRequest:imageRequest]map:^id(RACTuple *value) {
+	_currentDisposable = [[[self.httpClient rac_GET:urlStr parameters:nil] map:^id(RACTuple *value) {
 		return [value first];
-	}]subscribeNext:^(UIImage *image) {
+	}] subscribeNext:^(UIImage *image) {
 		[imageSubject sendNext:image];
 		CGRect slice, remainder;
 		CGRectDivide(self.view.bounds, &slice, &remainder, 44, CGRectMaxYEdge);
@@ -125,19 +127,20 @@
 	//Fetch the Flickr feed for groups.
 	[self.statusSignal sendNext:@"Fetching Flickr XML..."];
 
-	NSURLRequest *flickrRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://api.flickr.com/services/rest/?method=flickr.groups.browse&api_key=b6300e17ad3c506e706cb0072175d047&cat_id=34427469792%40N01&format=rest"]];
 	
-	_currentDisposable = [[[AFXMLRequestOperation rac_startXMLParserRequestOperationWithRequest:flickrRequest]map:^id(RACTuple *value) {
+	NSString *urlStr = @"http://api.flickr.com/services/rest/?method=flickr.groups.browse&api_key=b6300e17ad3c506e706cb0072175d047&cat_id=34427469792%40N01&format=rest";
+	self.httpClient.responseSerializer = [AFXMLParserResponseSerializer serializer];
+	
+	_currentDisposable = [[[self.httpClient rac_GET:urlStr parameters:nil]map:^id(RACTuple *value) {
 		return [value second];
-	}]subscribeNext:^(NSHTTPURLResponse *response) {
+	}] subscribeNext:^(NSHTTPURLResponse *response) {
 		[self.statusSignal sendNext:response.allHeaderFields.description];
 		
 		[self performSelector:@selector(testError) withObject:nil afterDelay:0.5];
 	}];
 }
 
-- (void)testError
-{
+- (void)testError {
 	[self.statusSignal sendNext:@"Sending Error-Prone Request..."];
 	
 	//Send an un-authorized request to show how error blocks work.
@@ -146,32 +149,12 @@
 	NSDictionary *params = [[NSDictionary alloc]initWithObjectsAndKeys:@"json", @"format", @"66854529@N00", @"user_id", @"1", @"nojsoncallback", nil];
 	NSString *path = [[NSString alloc]initWithFormat:@"services/rest/?method=flickr.people.getPhotos"];
 	
-	AFHTTPClient *client = [[AFHTTPClient alloc]initWithBaseURL:url];
-	
-	NSMutableURLRequest *af_request = [client requestWithMethod:@"GET" path:path parameters:params];
-	
-	_currentDisposable = [[AFJSONRequestOperation rac_startJSONRequestOperationWithRequest:af_request]subscribeError:^(NSError *error) {
+	AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:url];
+	manager.requestSerializer = [AFJSONRequestSerializer serializer];
+	manager.responseSerializer = [AFJSONResponseSerializer serializer];
+
+	_currentDisposable = [[manager rac_GET:path parameters:params] subscribeError:^(NSError *error) {
 		[self.statusSignal sendNext:[error localizedDescription]];
-		
-		[self performSelector:@selector(fetchRAC) withObject:nil afterDelay:0.5];
-	}];
-}
-
-- (void)fetchRAC {
-	//Double fetch completion blocks to show that RAC doesn't have to overwrite your completion
-	//blocks
-	[self.statusSignal sendNext:@"Fetching With Double Completion Blocks..."];
-	
-	NSURLRequest *flickrRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://api.flickr.com/services/rest/?method=flickr.groups.browse&api_key=b6300e17ad3c506e706cb0072175d047&cat_id=34427469792%40N01&format=rest"]];
-
-	AFXMLRequestOperation *reqOp = [AFXMLRequestOperation XMLParserRequestOperationWithRequest:flickrRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSXMLParser *XMLParser) {
-		NSLog(@"Inner Comp");
-	} failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSXMLParser *XMLParser) {
-		NSLog(@"Inner Error");
-	}];
-
-	_currentDisposable = [[reqOp rac_start]subscribeCompleted:^{
-		NSLog(@"Outer Comp");
 		
 		[self performSelector:@selector(finish) withObject:nil afterDelay:0.5];
 	}];
