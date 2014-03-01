@@ -2,11 +2,13 @@
 
 AFNetworking-RACExtensions is a delightful extension to the AFNetworking classes for iOS and Mac OS X. It's built on top of [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa), [AFNetworking](https://github.com/AFNetworking/AFNetworking), and other familiar foundation technologies. It provides an extension to the underlying modular architecture with well-designed, wrapper APIs that are… (easy?) to use. For example, here's how easy it is to get JSON from a URL:
 
-``` objective-c
-NSURL *url = [NSURL URLWithString:@"https://alpha-api.app.net/stream/0/posts/stream/global"];
-NSURLRequest *request = [NSURLRequest requestWithURL:url];
-AFJSONRequestOperation *operation = [[AFJSONRequestOperation rac_startJSONRequestOperationWithRequest:request]subscribeNext:^(RACTuple *JSONTuple) {
-    //Voila, magical JSON… well, maybe call `JSONTuple.first`, first.
+``` Objective-C
+AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:url];
+manager.requestSerializer = [AFJSONRequestSerializer serializer];
+manager.responseSerializer = [AFJSONResponseSerializer serializer];
+
+[[manager rac_GET:path parameters:params] subscribeNext:^(RACTuple *JSONTuple) {
+	//Voila, magical JSON… well, maybe call `JSONTuple.first`, first.
 }];
 ```
 
@@ -28,94 +30,11 @@ Choose AFNetworking, then choose AFNetworking+RACExtensions, for your next proje
 
 ## Overview
 
-_BEGIN_HTML_DECLS
-
 Read the headers. Honestly, they have some really good explanations of how to use things.
-
-_END_HTML_DECLS
-
-## Example Usage
-
-### XML Request
-
-``` objective-c
-NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://api.flickr.com/services/rest/?method=flickr.groups.browse&api_key=b6300e17ad3c506e706cb0072175d047&cat_id=34427469792%40N01&format=rest"]];
-AFXMLRequestOperation *operation = [[AFXMLRequestOperation rac_startXMLParserRequestOperationWithRequest:request]subscribeNext:^(RACTuple *res) {
-  NSXMLParser *XMLParser = res.first;
-  XMLParser.delegate = self;
-  [XMLParser parse];
-}];
-```
-
-### Image Request
-
-``` objective-c
-UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 100.0f, 100.0f)];
-[imageView setImageWithURL:[NSURL URLWithString:@"http://i.imgur.com/r4uwx.jpg"] placeholderImage:[UIImage imageNamed:@"placeholder-avatar"]];
-```
-
-OK, even I feel short-changed by that one.  Here's how to do it using only Reactive APIs:
-
-### (Real) Image Request
-
-``` objective-c
-RACSubject *imageSubject = [RACSubject subject];
-[self.afLogoImageView rac_liftSelector:@selector(setImage:) withObjects:imageSubject];
-NSURLRequest *imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://raw.github.com/AFNetworking/AFNetworking/gh-pages/afnetworking-logo.png"]];
-
-[[[AFImageRequestOperation rac_startImageRequestOperationWithRequest:imageRequest]map:^id(RACTuple *values) {
-  return [values first];
-}]subscribeNext:^(UIImage *image) {
-  [imageSubject sendNext:image];
-}];
-```
-
-### API Client Request
-
-``` objective-c
-// AFAppDotNetAPIClient is a subclass of AFHTTPClient, which defines the base URL and default HTTP headers for NSURLRequests it creates
-[[[AFAppDotNetAPIClient sharedClient] rac_getPath:@"stream/0/posts/stream/global" parameters:nil]subscribeNext:^(RACTuple *next) {
-    NSLog(@"App.net Global Stream: %@", next.first);
-}];
-```
-
-### File Upload with Progress Callback
-
-``` objective-c
-NSURL *url = [NSURL URLWithString:@"http://api-base-url.com"];
-AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
-NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"avatar.jpg"], 0.5);
-NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST" path:@"/upload" parameters:nil constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
-    [formData appendPartWithFileData:imageData name:@"avatar" fileName:@"avatar.jpg" mimeType:@"image/jpeg"];
-}];
-
-AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-[operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
-    NSLog(@"Sent %lld of %lld bytes", totalBytesWritten, totalBytesExpectedToWrite);
-}];
-[[httpClient rac_enqueueHTTPRequestOperation:operation]subscribeCompleted:^{
-  //We're Done here
-}];
-```
-
-### Streaming Request
-
-``` objective-c
-NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:8080/encode"]];
-
-AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-operation.inputStream = [NSInputStream inputStreamWithFileAtPath:[[NSBundle mainBundle] pathForResource:@"large-image" ofType:@"tiff"]];
-operation.outputStream = [NSOutputStream outputStreamToMemory];
-[[operation rac_start]subscribeCompleted^{
-
-}];
-```
 
 ## Requirements
 
-AFNetworking 1.0 and higher requires either [iOS 5.0](http://developer.apple.com/library/ios/#releasenotes/General/WhatsNewIniPhoneOS/Articles/iPhoneOS4.html) and above, or [Mac OS 10.7](http://developer.apple.com/library/mac/#releasenotes/MacOSX/WhatsNewInOSX/Articles/MacOSX10_6.html#//apple_ref/doc/uid/TP40008898-SW7) ([64-bit with modern Cocoa runtime](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtVersionsPlatforms.html)) and above.
-
-For compatibility with iOS 4.3, use the latest 0.10.x release of AFNetworking.  In theory, ReactiveCocoa could work across most iOS versions, but you'd be wise to support only 4.0+ when using the extensions.
+AFNetworking 1.0 and higher requires either [iOS 5.0](http://developer.apple.com/library/ios/#releasenotes/General/WhatsNewIniPhoneOS/Articles/iPhoneOS4.html) and above, or [Mac OS 10.8](http://developer.apple.com/library/mac/#releasenotes/MacOSX/WhatsNewInOSX/Articles/MacOSX10_6.html#//apple_ref/doc/uid/TP40008898-SW7) ([64-bit with modern Cocoa runtime](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtVersionsPlatforms.html)) and above.
 
 ### ARC
 
