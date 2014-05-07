@@ -7,8 +7,8 @@ AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] 
 manager.requestSerializer = [AFJSONRequestSerializer serializer];
 manager.responseSerializer = [AFJSONResponseSerializer serializer];
 
-[[manager rac_GET:path parameters:params] subscribeNext:^(RACTuple *JSONTuple) {
-	//Voila, magical JSON… well, maybe call `JSONTuple.first`, first.
+[[manager rac_GET:path parameters:params] subscribeNext:^(id JSON) {
+	//Voila, magical JSON…
 }];
 ```
 
