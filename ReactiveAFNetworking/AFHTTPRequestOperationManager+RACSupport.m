@@ -23,36 +23,28 @@
 }
 
 - (RACSignal *)rac_GET:(NSString *)path parameters:(NSDictionary *)parameters {
-	return [[self
-			 rac_requestPath:path parameters:parameters method:@"GET"]
-			setNameWithFormat:@"<%@: %p> -rac_getPath: %@, parameters: %@", self.class, self, path, parameters];
-	
+	return [[self rac_requestPath:path parameters:parameters method:@"GET"]
+			setNameWithFormat:@"%@ -rac_GET: %@, parameters: %@", self.class, path, parameters];
 }
 
 - (RACSignal *)rac_POST:(NSString *)path parameters:(NSDictionary *)parameters {
-	return [[self
-			 rac_requestPath:path parameters:parameters method:@"POST"]
-			setNameWithFormat:@"<%@: %p> -rac_postPath: %@, parameters: %@", self.class, self, path, parameters];
-	
+	return [[self rac_requestPath:path parameters:parameters method:@"POST"]
+			setNameWithFormat:@"%@ -rac_POST: %@, parameters: %@", self.class, path, parameters];
 }
 
 - (RACSignal *)rac_PUT:(NSString *)path parameters:(NSDictionary *)parameters {
-	return [[self
-			 rac_requestPath:path parameters:parameters method:@"PUT"]
-			setNameWithFormat:@"<%@: %p> -rac_putPath: %@, parameters: %@", self.class, self, path, parameters];
-	
+	return [[self rac_requestPath:path parameters:parameters method:@"PUT"]
+			setNameWithFormat:@"%@ -rac_PUT: %@, parameters: %@", self.class, path, parameters];
 }
 
 - (RACSignal *)rac_DELETE:(NSString *)path parameters:(NSDictionary *)parameters {
-	return [[self
-			 rac_requestPath:path parameters:parameters method:@"DELETE"]
-			setNameWithFormat:@"<%@: %p> -rac_deletePath: %@, parameters: %@", self.class, self, path, parameters];
+	return [[self rac_requestPath:path parameters:parameters method:@"DELETE"]
+			setNameWithFormat:@"%@ -rac_DELETE: %@, parameters: %@", self.class, path, parameters];
 }
 
 - (RACSignal *)rac_PATCH:(NSString *)path parameters:(NSDictionary *)parameters {
-	return [[self
-			 rac_requestPath:path parameters:parameters method:@"PATCH"]
-			setNameWithFormat:@"<%@: %p> -rac_patchPath: %@, parameters: %@", self.class, self, path, parameters];
+	return [[self rac_requestPath:path parameters:parameters method:@"PATCH"]
+			setNameWithFormat:@"%@ -rac_PATCH: %@, parameters: %@", self.class, path, parameters];
 }
 
 - (RACSignal *)rac_requestPath:(NSString *)path parameters:(NSDictionary *)parameters method:(NSString *)method {
