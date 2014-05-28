@@ -12,19 +12,19 @@
 
 @implementation AFHTTPSessionManager (RACSupport)
 
-- (RACSignal *)rac_GET:(NSString *)path parameters:(NSDictionary *)parameters {
-	return [[self rac_requestPath:path parameters:parameters method:@"GET"]
-			setNameWithFormat:@"%@ -rac_GET: %@, parameters: %@", self.class, path, parameters];
+- (RACSignal *)rac_GET:(NSString *)URLString parameters:(NSDictionary *)parameters {
+	return [[self rac_requestPath:URLString parameters:parameters method:@"GET"]
+			setNameWithFormat:@"%@ -rac_GET: %@, parameters: %@", self.class, URLString, parameters];
 }
 
 - (RACSignal *)rac_HEAD:(NSString *)URLString parameters:(NSDictionary *)parameters {
-	return [[self rac_requestPath:path parameters:parameters method:@"HEAD"]
-			setNameWithFormat:@"%@ -rac_HEAD: %@, parameters: %@", self.class, path, parameters];
+	return [[self rac_requestPath:URLString parameters:parameters method:@"HEAD"]
+			setNameWithFormat:@"%@ -rac_HEAD: %@, parameters: %@", self.class, URLString, parameters];
 }
 
-- (RACSignal *)rac_POST:(NSString *)path parameters:(NSDictionary *)parameters {
-	return [[self rac_requestPath:path parameters:parameters method:@"POST"]
-			setNameWithFormat:@"%@ -rac_POST: %@, parameters: %@", self.class, path, parameters];
+- (RACSignal *)rac_POST:(NSString *)URLString parameters:(NSDictionary *)parameters {
+	return [[self rac_requestPath:URLString parameters:parameters method:@"POST"]
+			setNameWithFormat:@"%@ -rac_POST: %@, parameters: %@", self.class, URLString, parameters];
 }
 
 - (RACSignal *)rac_POST:(NSString *)URLString parameters:(NSDictionary *)parameters constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block {
@@ -44,7 +44,7 @@
 		return [RACDisposable disposableWithBlock:^{
 			[task cancel];
 		}];
-	}] setNameWithFormat:@"%@ -rac_POST: %@, parameters: %@, constructingBodyWithBlock:", self.class, path, parameters];
+	}] setNameWithFormat:@"%@ -rac_POST: %@, parameters: %@, constructingBodyWithBlock:", self.class, URLString, parameters];
 ;
 }
 
