@@ -17,7 +17,7 @@
 			setNameWithFormat:@"%@ -rac_GET: %@, parameters: %@", self.class, path, parameters];
 }
 
-- (RACSignal *)rac_HEAD:(NSString *)URLString parameters:(NSDictionary *)parameters {
+- (RACSignal *)rac_HEAD:(NSString *)path parameters:(NSDictionary *)parameters {
 	return [[self rac_requestPath:path parameters:parameters method:@"HEAD"]
 			setNameWithFormat:@"%@ -rac_HEAD: %@, parameters: %@", self.class, path, parameters];
 }
@@ -27,9 +27,9 @@
 			setNameWithFormat:@"%@ -rac_POST: %@, parameters: %@", self.class, path, parameters];
 }
 
-- (RACSignal *)rac_POST:(NSString *)URLString parameters:(NSDictionary *)parameters constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block {
+- (RACSignal *)rac_POST:(NSString *)path parameters:(NSDictionary *)parameters constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block {
 	return [[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
-		NSMutableURLRequest *request = [self.requestSerializer multipartFormRequestWithMethod:@"POST" URLString:[[NSURL URLWithString:URLString relativeToURL:self.baseURL] absoluteString] parameters:parameters constructingBodyWithBlock:block error:nil];
+		NSMutableURLRequest *request = [self.requestSerializer multipartFormRequestWithMethod:@"POST" URLString:[[NSURL URLWithString:path relativeToURL:self.baseURL] absoluteString] parameters:parameters constructingBodyWithBlock:block error:nil];
 		
 		NSURLSessionDataTask *task = [self dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
 			if (error) {
