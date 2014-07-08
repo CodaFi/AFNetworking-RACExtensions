@@ -9,9 +9,14 @@
 #endif
 
 #ifdef __OBJC__
-	#import <UIKit/UIKit.h>
 	#import <Foundation/Foundation.h>
 	#import <ReactiveCocoa/ReactiveCocoa.h>
-	#import <MobileCoreServices/MobileCoreServices.h>
-	#import <SystemConfiguration/SystemConfiguration.h>
+    #import <SystemConfiguration/SystemConfiguration.h>
+
+    #if __IPHONE_OS_VERSION_MIN_REQUIRED
+        #import <UIKit/UIKit.h>
+        #import <MobileCoreServices/MobileCoreServices.h>
+    #else
+        #import <CoreServices/CoreServices.h>
+    #endif
 #endif

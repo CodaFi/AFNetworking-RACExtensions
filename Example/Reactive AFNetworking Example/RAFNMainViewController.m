@@ -7,13 +7,11 @@
 //
 
 #import "RAFNMainViewController.h"
-#import "RACAFNetworking.h"
-#import <ReactiveCocoa/UIControl+RACSignalSupport.h>
-
 //Preserve double completion blocks for testing
 #define RAFN_MAINTAIN_COMPLETION_BLOCKS
+#import "RACAFNetworking.h"
 
-@interface RAFNMainViewController () 
+@interface RAFNMainViewController ()
 
 @property (nonatomic, strong) UITextView *statusTextView;
 @property (nonatomic, strong) UIImageView *afLogoImageView;
@@ -28,18 +26,16 @@
 
 @implementation RAFNMainViewController 
 
-- (id)init
-{
+- (id)init {
 	self = [super init];
-	if (self) {
-		//Signal for the textview's text
-		_statusSignal = [RACSubject subject];
-	}
+	
+	//Signal for the textview's text
+	_statusSignal = [RACSubject subject];
+
 	return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
 	// Do any additional setup after loading the view.
 	CGRect slice, remainder;
 	CGRectDivide(self.view.bounds, &slice, &remainder, 44, CGRectMaxYEdge);

@@ -8,9 +8,6 @@
 
 extern NSString *const AFHTTPClientMockResponse;
 
-#import "AFHTTPRequestOperationManager.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
-
 @interface AFHTTPRequestOperationManager (RAFMocking)
 
 - (RACSignal *)mock_GET:(NSString *)path parameters:(NSDictionary *)parameters;

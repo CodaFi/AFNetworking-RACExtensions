@@ -1,0 +1,11 @@
+//
+// Prefix header for all source files of the 'RAFNetworking Tests' target in the 'RAFNetworking Tests' project
+//
+
+#ifdef __OBJC__
+	#import <Cocoa/Cocoa.h>
+    #import <RACAFNetworking/RACAFNetworking.h>
+	#define EXP_SHORTHAND
+	#import <Expecta.h>
+	#import <Specta.h>
+#endif

@@ -20,7 +20,7 @@ extern NSString *const RAFNetworkingOperationErrorKey;
 ///
 /// Sample Usage:
 ///
-///	[self.httpClient.networkReachabilityStatusSignal subscribeNext:^(NSNumber///status) {
+///	[self.httpClient.networkReachabilityStatusSignal subscribeNext:^(NSNumber *status) {
 ///		AFNetworkReachabilityStatus networkStatus = [status intValue];
 ///		switch (networkStatus) {
 ///			case AFNetworkReachabilityStatusUnknown:
