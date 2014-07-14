@@ -1,5 +1,7 @@
 ##AFNetworking-RACExtensions
 
+[![Build Status](https://travis-ci.org/CodaFi/AFNetworking-RACExtensions.svg?branch=master)](https://travis-ci.org/CodaFi/AFNetworking-RACExtensions)
+
 AFNetworking+RACExtensions is a delightful extension to the AFNetworking
 networking library for iOS and Mac OS X.  It's built on top of
 [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa),

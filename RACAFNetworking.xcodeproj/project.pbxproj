@@ -252,6 +252,13 @@
 			remoteGlobalIDString = E9ACDF0B13B2DD520010F4D7;
 			remoteInfo = Expecta;
 		};
+		84EA3821197378F70014CFF7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84DA97C8196C9FEA0064A552 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84DA97D0196C9FEA0064A552;
+			remoteInfo = RACAFNetworking;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -749,6 +756,7 @@
 				84DA9905196CA5180064A552 /* PBXTargetDependency */,
 				84DA9907196CA5180064A552 /* PBXTargetDependency */,
 				84DA97DF196C9FEA0064A552 /* PBXTargetDependency */,
+				84EA3822197378F70014CFF7 /* PBXTargetDependency */,
 			);
 			name = RACAFNetworkingTests;
 			productName = RACAFNetworkingTests;
@@ -1072,6 +1080,11 @@
 			name = Expecta;
 			targetProxy = 84DA9906196CA5180064A552 /* PBXContainerItemProxy */;
 		};
+		84EA3822197378F70014CFF7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84DA97D0196C9FEA0064A552 /* RACAFNetworking */;
+			targetProxy = 84EA3821197378F70014CFF7 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -1170,7 +1183,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/RACAFNetworking-cobqlwiqovxceadbwsjlnxbetvfw/Build/Products/Debug",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				FRAMEWORK_VERSION = A;
 				GCC_PREFIX_HEADER = "RACAFNetworking/RACAFNetworking-Prefix.pch";
@@ -1195,7 +1208,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/RACAFNetworking-cobqlwiqovxceadbwsjlnxbetvfw/Build/Products/Debug",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				FRAMEWORK_VERSION = A;
 				GCC_PREFIX_HEADER = "RACAFNetworking/RACAFNetworking-Prefix.pch";
@@ -1218,6 +1231,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				GCC_PREFIX_HEADER = "RACAFNetworkingTests/RACAFNetworkingTests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1247,6 +1261,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				GCC_PREFIX_HEADER = "RACAFNetworkingTests/RACAFNetworkingTests-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1263,9 +1278,11 @@
 		};
 		84DA989E196CA1DF0064A552 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84DA9856196CA0A60064A552 /* Mac-StaticLibrary.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				GCC_PREFIX_HEADER = "RACAFNetworking/RACAFNetworking-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1277,9 +1294,11 @@
 		};
 		84DA989F196CA1DF0064A552 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84DA9856196CA0A60064A552 /* Mac-StaticLibrary.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				GCC_PREFIX_HEADER = "RACAFNetworking/RACAFNetworking-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1287,9 +1306,10 @@
 		};
 		84DA98C9196CA22B0064A552 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84DA9850196CA0A60064A552 /* iOS-StaticLibrary.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				GCC_PREFIX_HEADER = "RACAFNetworking/RACAFNetworking-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1310,9 +1330,10 @@
 		};
 		84DA98CA196CA22B0064A552 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84DA9850196CA0A60064A552 /* iOS-StaticLibrary.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				GCC_PREFIX_HEADER = "RACAFNetworking/RACAFNetworking-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
