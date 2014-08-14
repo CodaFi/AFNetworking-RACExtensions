@@ -8,5 +8,5 @@ install: true
 
 script:
 - xctool -project RACAFNetworking.xcodeproj -scheme RACAFNetworking -sdk macosx ONLY_ACTIVE_ARCH=NO clean build
-- xctool -project RACAFNetworking.xcodeproj -scheme RACAFNetworking-Mac macosx ONLY_ACTIVE_ARCH=NO build
+- xctool -project RACAFNetworking.xcodeproj -scheme RACAFNetworking-Mac -sdk macosx ONLY_ACTIVE_ARCH=NO build
 - xctool -project RACAFNetworking.xcodeproj -scheme RACAFNetworking-iOS -sdk iphonesimulator7.1 ONLY_ACTIVE_ARCH=NO build
