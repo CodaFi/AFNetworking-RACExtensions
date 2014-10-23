@@ -22,8 +22,8 @@ initWithBaseURL:url];
 manager.requestSerializer = [AFJSONRequestSerializer serializer];
 manager.responseSerializer = [AFJSONResponseSerializer serializer];
 
-[[manager rac_GET:path parameters:params] subscribeNext:^(id JSON) {
-    //Voila, magical JSON…
+[[manager rac_GET:path parameters:params] subscribeNext:^(RACTuple *JSONAndHeaders) {
+    //Voila, a tuple with (JSON, HTTPResponse)
 }];
 ```
 
