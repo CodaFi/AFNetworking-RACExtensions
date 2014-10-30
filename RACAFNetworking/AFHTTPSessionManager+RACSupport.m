@@ -35,7 +35,7 @@
 			if (error) {
 				[subscriber sendError:error];
 			} else {
-				[subscriber sendNext:responseObject];
+				[subscriber sendNext:RACTuplePack(responseObject, response)];
 				[subscriber sendCompleted];
 			}
 		}];
@@ -71,7 +71,7 @@
 			if (error) {
 				[subscriber sendError:error];
 			} else {
-				[subscriber sendNext:responseObject];
+				[subscriber sendNext:RACTuplePack(responseObject, response)];
 				[subscriber sendCompleted];
 			}
 		}];
