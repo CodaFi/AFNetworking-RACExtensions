@@ -11,6 +11,8 @@
 
 #if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090)
 
+extern NSString *const RACAFNResponseObjectErrorKey;
+
 @interface AFHTTPSessionManager (RACSupport)
 
 /// A convenience around -GET:parameters:success:failure: that returns a cold signal of the
