@@ -10,6 +10,8 @@
 
 #import "AFHTTPSessionManager+RACSupport.h"
 
+NSString *const RACAFNResponseObjectErrorKey = @"responseObject";
+
 @implementation AFHTTPSessionManager (RACSupport)
 
 - (RACSignal *)rac_GET:(NSString *)path parameters:(id)parameters {
@@ -35,7 +37,7 @@
 			if (error) {
 				NSMutableDictionary *userInfo = [error.userInfo mutableCopy];
         			if (responseObject) {
-					userInfo[@"responseObject"] = responseObject;
+					userInfo[RACAFNResponseObjectErrorKey] = responseObject;
           			}
         			NSError *errorWithRes = [NSError errorWithDomain:error.domain code:error.code userInfo:[userInfo copy]];
 				[subscriber sendError:errorWithRes];
@@ -76,7 +78,7 @@
 			if (error) {
 				NSMutableDictionary *userInfo = [error.userInfo mutableCopy];
 				if (responseObject) {
-					userInfo[@"responseObject"] = responseObject;
+					userInfo[RACAFNResponseObjectErrorKey] = responseObject;
 				}
 				NSError *errorWithRes = [NSError errorWithDomain:error.domain code:error.code userInfo:[userInfo copy]];
 				[subscriber sendError:errorWithRes];
