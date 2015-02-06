@@ -33,11 +33,11 @@
 		
 		NSURLSessionDataTask *task = [self dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
 			if (error) {
-        NSMutableDictionary *userInfo = [error.userInfo mutableCopy];
-        if (responseObject) {
-          userInfo[@"responseObject"] = responseObject;
-        }
-        NSError *errorWithRes = [NSError errorWithDomain:error.domain code:error.code userInfo:[userInfo copy]];
+				NSMutableDictionary *userInfo = [error.userInfo mutableCopy];
+        			if (responseObject) {
+					userInfo[@"responseObject"] = responseObject;
+          			}
+        			NSError *errorWithRes = [NSError errorWithDomain:error.domain code:error.code userInfo:[userInfo copy]];
 				[subscriber sendError:errorWithRes];
 			} else {
 				[subscriber sendNext:RACTuplePack(responseObject, response)];
@@ -74,11 +74,11 @@
 		
 		NSURLSessionDataTask *task = [self dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
 			if (error) {
-        NSMutableDictionary *userInfo = [error.userInfo mutableCopy];
-        if (responseObject) {
-          userInfo[@"responseObject"] = responseObject;
-        }
-        NSError *errorWithRes = [NSError errorWithDomain:error.domain code:error.code userInfo:[userInfo copy]];
+				NSMutableDictionary *userInfo = [error.userInfo mutableCopy];
+				if (responseObject) {
+					userInfo[@"responseObject"] = responseObject;
+				}
+				NSError *errorWithRes = [NSError errorWithDomain:error.domain code:error.code userInfo:[userInfo copy]];
 				[subscriber sendError:errorWithRes];
 			} else {
 				[subscriber sendNext:RACTuplePack(responseObject, response)];
