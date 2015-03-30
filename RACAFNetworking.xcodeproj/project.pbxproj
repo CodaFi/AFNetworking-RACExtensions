@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38BDA07E1AC95EFB00598012 /* NSError+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 38BDA07C1AC95EFB00598012 /* NSError+AFNetworking.h */; };
+		38BDA07F1AC95EFB00598012 /* NSError+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 38BDA07D1AC95EFB00598012 /* NSError+AFNetworking.m */; };
 		84DA97D7196C9FEA0064A552 /* RACAFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 84DA97D6196C9FEA0064A552 /* RACAFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		84DA97DD196C9FEA0064A552 /* RACAFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DA97D1196C9FEA0064A552 /* RACAFNetworking.framework */; };
 		84DA97F5196CA0430064A552 /* AFHTTPRequestOperationManager+RACSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 84DA97ED196CA0430064A552 /* AFHTTPRequestOperationManager+RACSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -95,6 +97,7 @@
 		84DA995A196CAD4C0064A552 /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 84DA9810196CA05D0064A552 /* AFURLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		84DA995B196CAD4D0064A552 /* AFHTTPRequestOperationManager+RAFMocking.h in Headers */ = {isa = PBXBuildFile; fileRef = 84DA98DA196CA4E00064A552 /* AFHTTPRequestOperationManager+RAFMocking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		84DA995C196CAE5A0064A552 /* libReactiveCocoa-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DA987A196CA1520064A552 /* libReactiveCocoa-iOS.a */; };
+		D810CE5FB1F8A49119746F1F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E73B8343A69B25B12DBC8F5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -274,6 +277,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		38BDA07C1AC95EFB00598012 /* NSError+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+AFNetworking.h"; sourceTree = "<group>"; };
+		38BDA07D1AC95EFB00598012 /* NSError+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+AFNetworking.m"; sourceTree = "<group>"; };
+		6E73B8343A69B25B12DBC8F5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DA97D1196C9FEA0064A552 /* RACAFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RACAFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DA97D5196C9FEA0064A552 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84DA97D6196C9FEA0064A552 /* RACAFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RACAFNetworking.h; sourceTree = "<group>"; };
@@ -351,6 +357,7 @@
 				84DA990D196CA6210064A552 /* SystemConfiguration.framework in Frameworks */,
 				84DA990B196CA6160064A552 /* Cocoa.framework in Frameworks */,
 				84DA9887196CA15D0064A552 /* ReactiveCocoa.framework in Frameworks */,
+				D810CE5FB1F8A49119746F1F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +400,8 @@
 				84DA97D3196C9FEA0064A552 /* RACAFNetworking */,
 				84DA97E0196C9FEA0064A552 /* RACAFNetworkingTests */,
 				84DA97D2196C9FEA0064A552 /* Products */,
+				EA219C96B04AD746C68A20C9 /* Pods */,
+				999C4C432BF5F82FE8B0BAF2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -452,6 +461,8 @@
 		84DA97FD196CA0470064A552 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				38BDA07C1AC95EFB00598012 /* NSError+AFNetworking.h */,
+				38BDA07D1AC95EFB00598012 /* NSError+AFNetworking.m */,
 				84DA97ED196CA0430064A552 /* AFHTTPRequestOperationManager+RACSupport.h */,
 				84DA97EE196CA0430064A552 /* AFHTTPRequestOperationManager+RACSupport.m */,
 				84DA97EF196CA0430064A552 /* AFHTTPSessionManager+RACSupport.h */,
@@ -649,6 +660,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		999C4C432BF5F82FE8B0BAF2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6E73B8343A69B25B12DBC8F5 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA219C96B04AD746C68A20C9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -657,6 +683,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84DA9823196CA05D0064A552 /* AFURLSessionManager.h in Headers */,
+				38BDA07E1AC95EFB00598012 /* NSError+AFNetworking.h in Headers */,
 				84DA981F196CA05D0064A552 /* AFURLRequestSerialization.h in Headers */,
 				84DA981B196CA05D0064A552 /* AFSecurityPolicy.h in Headers */,
 				84DA97F9196CA0430064A552 /* AFURLConnectionOperation+RACSupport.h in Headers */,
@@ -727,10 +754,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84DA97E7196C9FEA0064A552 /* Build configuration list for PBXNativeTarget "RACAFNetworking" */;
 			buildPhases = (
+				368AF30A4FB5523CDAFC10AD /* Check Pods Manifest.lock */,
 				84DA97CC196C9FEA0064A552 /* Sources */,
 				84DA97CD196C9FEA0064A552 /* Frameworks */,
 				84DA97CE196C9FEA0064A552 /* Headers */,
 				84DA97CF196C9FEA0064A552 /* Resources */,
+				A00922B8173C96F4A1A5D13A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -990,6 +1019,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		368AF30A4FB5523CDAFC10AD /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A00922B8173C96F4A1A5D13A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		84DA97CC196C9FEA0064A552 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -999,6 +1061,7 @@
 				84DA981C196CA05D0064A552 /* AFSecurityPolicy.m in Sources */,
 				84DA97F6196CA0430064A552 /* AFHTTPRequestOperationManager+RACSupport.m in Sources */,
 				84DA9815196CA05D0064A552 /* AFHTTPRequestOperationManager.m in Sources */,
+				38BDA07F1AC95EFB00598012 /* NSError+AFNetworking.m in Sources */,
 				84DA981E196CA05D0064A552 /* AFURLConnectionOperation.m in Sources */,
 				84DA9813196CA05D0064A552 /* AFHTTPRequestOperation.m in Sources */,
 				84DA97FA196CA0430064A552 /* AFURLConnectionOperation+RACSupport.m in Sources */,
