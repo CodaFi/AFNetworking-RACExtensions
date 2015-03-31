@@ -9,4 +9,4 @@
 #import "AFHTTPRequestOperationManager+RACSupport.h"
 #import "AFURLConnectionOperation+RACSupport.h"
 #import "AFHTTPSessionManager+RACSupport.h"
-#import "NSError+AFNetworking.h"
+#import "NSError+RACAFNetworking.h"

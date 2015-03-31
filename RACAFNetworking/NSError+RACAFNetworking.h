@@ -1,6 +1,9 @@
-// NSError+AFNetworking.h
 //
-// Copyright (c) 2013-2015 AFNetworking (http://afnetworking.com)
+// NSError+AFNetworking.m
+//
+// The MIT License (MIT)
+//
+// Copyright (c) 2015 Dal Rupnik (https://github.com/legoless)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -19,21 +22,28 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+//
 
 #import <Foundation/Foundation.h>
 
-@interface NSError (AFNetworking)
+@interface NSError (RACAFNetworking)
 
-/*!
- *  HTTP Status Code that was returned from network
- */
-@property (nonatomic, readonly) NSInteger af_networkStatusCode;
+/// HTTP Status Code that was returned from network
+@property (nonatomic, readonly) NSInteger rac_networkStatusCode;
 
-@property (nonatomic, readonly) NSData *af_responseData;
-@property (nonatomic, readonly) NSString *af_responseString;
-@property (nonatomic, readonly) NSString *af_requestURL;
+/// Response data that was returned from network
+@property (nonatomic, readonly) NSData *rac_responseData;
 
-@property (nonatomic, readonly) NSURLResponse *af_response;
-@property (nonatomic, readonly) NSURLRequest *af_request;
+/// Response string allocated from response data in UTF8 format
+@property (nonatomic, readonly) NSString *rac_responseString;
+
+/// Request URL
+@property (nonatomic, readonly) NSString *rac_requestURL;
+
+/// NSURLResponse object with response details
+@property (nonatomic, readonly) NSURLResponse *rac_response;
+
+/// NSURLRequest object with request information
+@property (nonatomic, readonly) NSURLRequest *rac_request;
 
 @end

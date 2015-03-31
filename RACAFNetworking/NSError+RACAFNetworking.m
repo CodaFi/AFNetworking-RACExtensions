@@ -1,6 +1,9 @@
-// NSError+AFNetworking.m
 //
-// Copyright (c) 2013-2015 AFNetworking (http://afnetworking.com)
+// NSError+RACAFNetworking.m
+//
+// The MIT License (MIT)
+//
+// Copyright (c) 2015 Dal Rupnik (https://github.com/legoless)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -19,19 +22,19 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+//
 
-#import "NSError+AFNetworking.h"
+#import "NSError+RACAFNetworking.h"
 #import "AFURLRequestSerialization.h"
 
-@implementation NSError (AFNetworking)
+@implementation NSError (RACAFNetworking)
 
-- (NSInteger)af_networkStatusCode
-{
-    NSURLResponse* response = [self af_response];
+- (NSInteger)rac_networkStatusCode {
+    NSURLResponse *response = [self rac_response];
     
     if ([response isKindOfClass:[NSHTTPURLResponse class]])
     {
-        NSHTTPURLResponse* urlResponse = (NSHTTPURLResponse *)response;
+        NSHTTPURLResponse *urlResponse = (NSHTTPURLResponse *)response;
         
         return urlResponse.statusCode;
     }
@@ -39,58 +42,46 @@
     return 0;
 }
 
-- (NSURLRequest *)af_request
-{
-    return [self af_objectInUserInfo:AFNetworkingOperationFailingURLRequestErrorKey withError:self];
+- (NSURLRequest *)rac_request {
+    return [self rac_objectInUserInfo:AFNetworkingOperationFailingURLRequestErrorKey withError:self];
 }
 
-- (NSURLResponse *)af_response
-{
-    return [self objectInUserInfo:AFNetworkingOperationFailingURLResponseErrorKey withError:self];
+- (NSURLResponse *)rac_response {
+    return [self rac_objectInUserInfo:AFNetworkingOperationFailingURLResponseErrorKey withError:self];
 }
 
-- (NSData *)af_responseData
-{
-    return [self af_objectInUserInfo:AFNetworkingOperationFailingURLResponseDataErrorKey withError:self];
+- (NSData *)rac_responseData {
+    return [self rac_objectInUserInfo:AFNetworkingOperationFailingURLResponseDataErrorKey withError:self];
 }
 
-- (NSString *)af_responseString
-{
-    return [[NSString alloc] initWithData:[self af_objectInUserInfo:AFNetworkingOperationFailingURLResponseDataErrorKey withError:self] encoding:NSUTF8StringEncoding];
+- (NSString *)rac_responseString {
+    return [[NSString alloc] initWithData:[self rac_objectInUserInfo:AFNetworkingOperationFailingURLResponseDataErrorKey withError:self] encoding:NSUTF8StringEncoding];
 }
 
-- (NSString *)af_requestURL
-{
-    NSURLResponse* response = [self af_response];
+- (NSString *)rac_requestURL {
+    NSURLResponse *response = [self rac_response];
     
-    if ([response isKindOfClass:[NSHTTPURLResponse class]])
-    {
-        NSHTTPURLResponse* urlResponse = (NSHTTPURLResponse *)response;
+    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+        NSHTTPURLResponse *urlResponse = (NSHTTPURLResponse *)response;
         
         return urlResponse.URL.absoluteString;
     }
-    else
-    {
+    else {
         return (self.originalError.userInfo[NSURLErrorFailingURLStringErrorKey]) ? self.originalError.userInfo[NSURLErrorFailingURLStringErrorKey] : nil;
     }
 }
 
-#pragma mark - Helpers
+#pragma mark - Private methods
 
-- (id)af_objectInUserInfo:(NSString *)key withError:(NSError *)error
-{
-    if (error.userInfo[key])
-    {
-        return error.userInfo[key];
-    }
+- (id)rac_objectInUserInfo:(NSString *)key withError:(NSError *)error {
     
     //
     // Check for underlying error
     //
     
-    NSError* underlyingError = error.userInfo[NSUnderlyingErrorKey];
+    NSError *underlyingError = error.userInfo[NSUnderlyingErrorKey];
     
-    return (underlyingError.userInfo[key]) ? underlyingError.userInfo[key] : nil;
+    return error.userInfo[key] ?: underlyingError.userInfo[key];
 }
 
 @end
