@@ -1187,6 +1187,10 @@
 				);
 				FRAMEWORK_VERSION = A;
 				GCC_PREFIX_HEADER = "RACAFNetworking/RACAFNetworking-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					External/AFNetworking,
+				);
 				INFOPLIST_FILE = RACAFNetworking/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
@@ -1212,6 +1216,10 @@
 				);
 				FRAMEWORK_VERSION = A;
 				GCC_PREFIX_HEADER = "RACAFNetworking/RACAFNetworking-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					External/AFNetworking,
+				);
 				INFOPLIST_FILE = RACAFNetworking/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";

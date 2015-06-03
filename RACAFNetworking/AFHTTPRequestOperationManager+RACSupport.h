@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 CodaFi. All rights reserved.
 //
 
-#import "AFHTTPRequestOperationManager.h"
+#import <AFNetworking/AFHTTPRequestOperationManager.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 /// User info key for accessing the AFHTTPRequestOperation on which the error occured.
