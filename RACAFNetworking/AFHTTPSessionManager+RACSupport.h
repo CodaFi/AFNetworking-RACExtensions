@@ -8,6 +8,7 @@
 
 #import "AFHTTPSessionManager.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import "RACAFNConstants.h"
 
 #if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090)
 
@@ -42,6 +43,9 @@ extern NSString *const RACAFNResponseObjectErrorKey;
 /// A convenience around -DELETE:parameters:success:failure: that returns a cold signal of the
 /// resulting JSON object and response headers or error.
 - (RACSignal *)rac_DELETE:(NSString *)path parameters:(id)parameters;
+
+/// A basic method that returns a cold signal of the resulting JSON object and response headers or error.
+- (RACSignal *)rac_requestPath:(NSString *)path parameters:(id)parameters method:(NSString *)method;
 
 @end
 

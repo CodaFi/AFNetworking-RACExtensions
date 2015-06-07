@@ -8,6 +8,7 @@
 
 #import "AFHTTPRequestOperationManager.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import "RACAFNConstants.h"
 
 /// User info key for accessing the AFHTTPRequestOperation on which the error occured.
 extern NSString *const RAFNetworkingOperationErrorKey;
@@ -68,6 +69,9 @@ extern NSString *const RAFNetworkingOperationErrorKey;
 /// A convenience around -PATCH:parameters:success:failure: that returns a cold signal of the
 /// resulting JSON object and response headers or error.
 - (RACSignal *)rac_PATCH:(NSString *)path parameters:(id)parameters;
+
+/// A basic method that returns a cold signal of the resulting JSON object and response headers or error.
+- (RACSignal *)rac_requestPath:(NSString *)path parameters:(id)parameters method:(NSString *)method;
 
 @end
 

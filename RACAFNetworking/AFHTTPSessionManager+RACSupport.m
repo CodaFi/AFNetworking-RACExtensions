@@ -15,23 +15,23 @@ NSString *const RACAFNResponseObjectErrorKey = @"responseObject";
 @implementation AFHTTPSessionManager (RACSupport)
 
 - (RACSignal *)rac_GET:(NSString *)path parameters:(id)parameters {
-	return [[self rac_requestPath:path parameters:parameters method:@"GET"]
+	return [[self rac_requestPath:path parameters:parameters method:RACAFNHttpMethodGet]
 			setNameWithFormat:@"%@ -rac_GET: %@, parameters: %@", self.class, path, parameters];
 }
 
 - (RACSignal *)rac_HEAD:(NSString *)path parameters:(id)parameters {
-	return [[self rac_requestPath:path parameters:parameters method:@"HEAD"]
+	return [[self rac_requestPath:path parameters:parameters method:RACAFNHttpMethodHead]
 			setNameWithFormat:@"%@ -rac_HEAD: %@, parameters: %@", self.class, path, parameters];
 }
 
 - (RACSignal *)rac_POST:(NSString *)path parameters:(id)parameters {
-	return [[self rac_requestPath:path parameters:parameters method:@"POST"]
+	return [[self rac_requestPath:path parameters:parameters method:RACAFNHttpMethodPost]
 			setNameWithFormat:@"%@ -rac_POST: %@, parameters: %@", self.class, path, parameters];
 }
 
 - (RACSignal *)rac_POST:(NSString *)path parameters:(id)parameters constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block {
 	return [[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
-		NSMutableURLRequest *request = [self.requestSerializer multipartFormRequestWithMethod:@"POST" URLString:[[NSURL URLWithString:path relativeToURL:self.baseURL] absoluteString] parameters:parameters constructingBodyWithBlock:block error:nil];
+		NSMutableURLRequest *request = [self.requestSerializer multipartFormRequestWithMethod:RACAFNHttpMethodPost URLString:[[NSURL URLWithString:path relativeToURL:self.baseURL] absoluteString] parameters:parameters constructingBodyWithBlock:block error:nil];
 		
 		NSURLSessionDataTask *task = [self dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
 			if (error) {
@@ -56,17 +56,17 @@ NSString *const RACAFNResponseObjectErrorKey = @"responseObject";
 }
 
 - (RACSignal *)rac_PUT:(NSString *)path parameters:(id)parameters {
-	return [[self rac_requestPath:path parameters:parameters method:@"PUT"]
+	return [[self rac_requestPath:path parameters:parameters method:RACAFNHttpMethodPut]
 			setNameWithFormat:@"%@ -rac_PUT: %@, parameters: %@", self.class, path, parameters];
 }
 
 - (RACSignal *)rac_PATCH:(NSString *)path parameters:(id)parameters {
-	return [[self rac_requestPath:path parameters:parameters method:@"PATCH"]
+	return [[self rac_requestPath:path parameters:parameters method:RACAFNHttpMethodPatch]
 			setNameWithFormat:@"%@ -rac_PATCH: %@, parameters: %@", self.class, path, parameters];
 }
 
 - (RACSignal *)rac_DELETE:(NSString *)path parameters:(id)parameters {
-	return [[self rac_requestPath:path parameters:parameters method:@"DELETE"]
+	return [[self rac_requestPath:path parameters:parameters method:RACAFNHttpMethodDelete]
 			setNameWithFormat:@"%@ -rac_DELETE: %@, parameters: %@", self.class, path, parameters];
 }
 
