@@ -9,8 +9,9 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '6.0'
   s.osx.deployment_target = '10.8'
   s.requires_arc = true
+  s.default_subspecs = 'NSURLConnection', 'NSURLSession'
 
-  s.subspec 'Progress' do |ss|
+  s.subspec 'ExperimentalProgressCallbacks' do |ss|
     ss.dependency 'ReactiveCocoa/Core', '~> 2.0'
     ss.source_files = 'RACAFNetworking/RACSubscriber+AFProgressCallbacks.{h,m}'
   end
