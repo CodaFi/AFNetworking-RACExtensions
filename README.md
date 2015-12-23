@@ -1,3 +1,7 @@
+##Announcement
+
+Because I can no longer maintain this framework at the standards the open source community expects of me, and those I expect of myself, I have placed a feature freeze on this fork and will stop maintenance.  If support for future RAC's and AFNetworking's is needed, please fork this repository and update the podspecs as needed.
+
 ##AFNetworking-RACExtensions
 
 [![Build Status](https://travis-ci.org/CodaFi/AFNetworking-RACExtensions.svg?branch=master)](https://travis-ci.org/CodaFi/AFNetworking-RACExtensions)
