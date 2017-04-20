@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		550D0EBF1B243AB200FEB6EF /* RACAFNConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 550D0EBD1B243AB200FEB6EF /* RACAFNConstants.h */; };
+		550D0EC01B243AB200FEB6EF /* RACAFNConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 550D0EBD1B243AB200FEB6EF /* RACAFNConstants.h */; };
+		550D0EC11B243AB200FEB6EF /* RACAFNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 550D0EBE1B243AB200FEB6EF /* RACAFNConstants.m */; };
+		550D0EC21B243AB200FEB6EF /* RACAFNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 550D0EBE1B243AB200FEB6EF /* RACAFNConstants.m */; };
 		84DA97D7196C9FEA0064A552 /* RACAFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 84DA97D6196C9FEA0064A552 /* RACAFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		84DA97DD196C9FEA0064A552 /* RACAFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DA97D1196C9FEA0064A552 /* RACAFNetworking.framework */; };
 		84DA97F5196CA0430064A552 /* AFHTTPRequestOperationManager+RACSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 84DA97ED196CA0430064A552 /* AFHTTPRequestOperationManager+RACSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -274,6 +278,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		550D0EBD1B243AB200FEB6EF /* RACAFNConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RACAFNConstants.h; sourceTree = "<group>"; };
+		550D0EBE1B243AB200FEB6EF /* RACAFNConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RACAFNConstants.m; sourceTree = "<group>"; };
 		84DA97D1196C9FEA0064A552 /* RACAFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RACAFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DA97D5196C9FEA0064A552 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84DA97D6196C9FEA0064A552 /* RACAFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RACAFNetworking.h; sourceTree = "<group>"; };
@@ -460,6 +466,8 @@
 				84DA97F2196CA0430064A552 /* AFURLConnectionOperation+RACSupport.m */,
 				84DA97F3196CA0430064A552 /* RACSubscriber+AFProgressCallbacks.h */,
 				84DA97F4196CA0430064A552 /* RACSubscriber+AFProgressCallbacks.m */,
+				550D0EBD1B243AB200FEB6EF /* RACAFNConstants.h */,
+				550D0EBE1B243AB200FEB6EF /* RACAFNConstants.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -664,6 +672,7 @@
 				84DA9816196CA05D0064A552 /* AFHTTPSessionManager.h in Headers */,
 				84DA97F7196CA0430064A552 /* AFHTTPSessionManager+RACSupport.h in Headers */,
 				84DA9814196CA05D0064A552 /* AFHTTPRequestOperationManager.h in Headers */,
+				550D0EBF1B243AB200FEB6EF /* RACAFNConstants.h in Headers */,
 				84DA97F5196CA0430064A552 /* AFHTTPRequestOperationManager+RACSupport.h in Headers */,
 				84DA9819196CA05D0064A552 /* AFNetworkReachabilityManager.h in Headers */,
 				84DA9821196CA05D0064A552 /* AFURLResponseSerialization.h in Headers */,
@@ -681,6 +690,7 @@
 				84DA994C196CAD4C0064A552 /* RACAFNetworking.h in Headers */,
 				84DA994D196CAD4C0064A552 /* AFHTTPRequestOperationManager+RACSupport.h in Headers */,
 				84DA994E196CAD4C0064A552 /* AFHTTPSessionManager+RACSupport.h in Headers */,
+				550D0EC01B243AB200FEB6EF /* RACAFNConstants.h in Headers */,
 				84DA994F196CAD4C0064A552 /* AFURLConnectionOperation+RACSupport.h in Headers */,
 				84DA9951196CAD4C0064A552 /* AFHTTPRequestOperation.h in Headers */,
 				84DA9952196CAD4C0064A552 /* AFHTTPRequestOperationManager.h in Headers */,
@@ -1006,6 +1016,7 @@
 				84DA9817196CA05D0064A552 /* AFHTTPSessionManager.m in Sources */,
 				84DA981A196CA05D0064A552 /* AFNetworkReachabilityManager.m in Sources */,
 				84DA9822196CA05D0064A552 /* AFURLResponseSerialization.m in Sources */,
+				550D0EC11B243AB200FEB6EF /* RACAFNConstants.m in Sources */,
 				84DA9824196CA05D0064A552 /* AFURLSessionManager.m in Sources */,
 				84DA97FC196CA0430064A552 /* RACSubscriber+AFProgressCallbacks.m in Sources */,
 			);
@@ -1035,6 +1046,7 @@
 				84DA98AB196CA2070064A552 /* AFSecurityPolicy.m in Sources */,
 				84DA98AC196CA2070064A552 /* AFURLConnectionOperation.m in Sources */,
 				84DA98AD196CA2070064A552 /* AFURLRequestSerialization.m in Sources */,
+				550D0EC21B243AB200FEB6EF /* RACAFNConstants.m in Sources */,
 				84DA98AE196CA2070064A552 /* AFURLResponseSerialization.m in Sources */,
 				84DA98AF196CA2070064A552 /* AFURLSessionManager.m in Sources */,
 			);
